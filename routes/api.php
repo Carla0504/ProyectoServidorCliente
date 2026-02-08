@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // aqui se importan los controllers
-// use App\Http\Controllers\AuthController;
-// use App\Http\Controllers\BloqueController;
+// use App\Http\Controllers\ControllerQueSea;
 
 // rutas de autenticacion
 Route::post('/register', [AuthController::class, 'register']); 
@@ -22,6 +21,11 @@ Route::get('/sesion', [SesionController::class, 'index']);
 Route::post('/sesion/crear', [SesionController::class, 'store']); 
 Route::get('/sesion/{id}', [SesionController::class, 'show']); 
 Route::delete('/sesion/{id}', [SesionController::class, 'destroy']); 
+
+//sesion-plan entrenamiento
+Route::get('/sesionbloque', [SesionBloqueController::class, 'index']);
+Route::post('/sesionbloque/crear', [SesionBloqueController::class, 'store']); 
+Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'destroy']);
 
 // planer de entrenamiento (crear, borrar, ver)
 Route::get('/plan', [PlanController::class, 'index']); 
