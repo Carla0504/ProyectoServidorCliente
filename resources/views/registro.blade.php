@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="/css/registro.css">
 </head>
 <body>
     <div class="contenedor-registro">
@@ -26,5 +27,7 @@
         <h3>¿Ya tienes cuenta?</h3>
         <button type="submit">Iniciar Sesión</button>
     </div>
+
+    <script src="/js/registro.js"></script>
 </body>
 </html>
