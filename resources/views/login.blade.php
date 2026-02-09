@@ -9,6 +9,7 @@
 <body>
     <div class="contenedor-login">
         <h2>Iniciar sesión</h2>
+        
         <form id="formulario-login">
             <input type="text" id="usuario" placeholder="Email o usuario" required>
             <input type="password" id="password" placeholder="Contraseña" required>
