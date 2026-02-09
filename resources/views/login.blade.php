@@ -10,16 +10,14 @@
     <div class="contenedor-login">
         <h2>Iniciar sesión</h2>
         <form id="formulario-login">
-            <input type="text" id="usuario" placeholder="Email o usuario" require>
-            <input type="password" id="password" placeholder="Contraseña" require>
+            <input type="text" id="usuario" placeholder="Email o usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
 
             <button type="submit">Enviar</button>
         </form>
 
         <h3>Si no te has registrado, hazlo ahora</h3>
         <button type="submit">Registrarse</button>
-
-        <div class="mensaje" id="mensaje"></div>
     </div>
 
     <script src="/js/login.js"></script>
