@@ -5,6 +5,6 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
 
-  return view('Welcome');
+  return view('login');
 });
 
