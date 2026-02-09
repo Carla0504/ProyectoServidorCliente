@@ -13,7 +13,7 @@ body {
     align-items: center;
 }
 
-.contenedor-login {
+.inicio {
     background-color: #92d3c4;
     width: 360px;
     padding: 30px;
@@ -22,18 +22,18 @@ body {
     text-align: center;
 }
 
-.contenedor-login h2 {
+.inicio h2 {
     margin-bottom: 20px;
     color: #ffffff;
 }
 
-.contenedor-login h3 {
+.inicio h3 {
     margin: 20px 0 10px;
     font-size: 14px;
     color: #ffffff;
 }
 
-.contenedor-login input {
+.inicio input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -42,7 +42,7 @@ body {
     font-size: 14px;
 }
 
-.contenedor-login button {
+.inicio button {
     width: 100%;
     padding: 10px;
     background-color: #76b6a7;
@@ -54,6 +54,6 @@ body {
     transition: background-color 0.3s;
 }
 
-.contenedor-login button:hover {
+.inicio button:hover {
     background-color: #599386;
 }
