@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="contenedor-login">
@@ -14,6 +14,9 @@
 
             <button type="submit">Enviar</button>
         </form>
+
+        <h3>Si no te has registrado, hazlo ahora</h3>
+        <button type="submit">Registrarse</button>
 
         <div class="mensaje" id="mensaje"></div>
     </div>
