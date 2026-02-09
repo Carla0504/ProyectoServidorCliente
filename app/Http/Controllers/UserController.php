@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Ciclista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash; //cifrado
 
 class UserController extends Controller
 {

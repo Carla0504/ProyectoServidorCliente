@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SesionEntrenamientoController extends Controller
 {
     public function index(Request $request) {
-        //scroll infinito
+        //scroll infinito lo que hicimos con la travellist
         $offset = $request->query('offset', 0);
         $limit = $request->query('limit', 10);
 
