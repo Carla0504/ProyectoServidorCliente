@@ -24,13 +24,13 @@ body {
 
 .inicio h2 {
     margin-bottom: 20px;
-    color: #ffffff;
+    color: white;
 }
 
 .inicio h3 {
     margin: 20px 0 10px;
     font-size: 14px;
-    color: #ffffff;
+    color: white;
 }
 
 .inicio input {
@@ -47,7 +47,7 @@ body {
     padding: 10px;
     background-color: #76b6a7;
     border: none;
-    color: #ffffff;
+    color: white;
     font-size: 15px;
     border-radius: 4px;
     cursor: pointer;
