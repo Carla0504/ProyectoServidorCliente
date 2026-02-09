@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="/css/registro.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="contenedor-registro">
+    <div class="inicio">
         <h2>Registro de usuario</h2>
         
         <form id="formulario-registro">
