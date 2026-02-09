@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\ControllerQueSea;
 
 // rutas de autenticacion
-Route::post('/register', [AuthController::class, 'register']); 
-Route::post('/login', [AuthController::class, 'login']); 
-Route::post('/logout', [AuthController::class, 'logout']); 
+Route::post('/register', [UserController::class, 'register']); 
+Route::post('/login', [UserController::class, 'login']); 
+Route::post('/logout', [UserController::class, 'logout']); 
 
 // bloques de entrenamiento (crear, borrar, ver)
 Route::get('/bloque', [BloqueController::class, 'index']); 
@@ -17,22 +17,12 @@ Route::get('/bloque/{id}', [BloqueController::class, 'show']);
 Route::delete('/bloque/{id}/eliminar', [BloqueController::class, 'destroy']); 
 
 // sesiones de entrenamiento (crear, borrar, ver)
-Route::get('/sesion', [SesionController::class, 'index']);
-Route::post('/sesion/crear', [SesionController::class, 'store']); 
-Route::get('/sesion/{id}', [SesionController::class, 'show']); 
-Route::delete('/sesion/{id}', [SesionController::class, 'destroy']); 
+Route::get('/sesion', [SesionEntrenamientoController::class, 'index']);
+Route::post('/sesion/crear', [SesionEntrenamientoController::class, 'store']); 
+Route::get('/sesion/{id}', [SesionEntrenamientoController::class, 'show']); 
+Route::delete('/sesion/{id}', [SesionEntrenamientoController::class, 'destroy']); 
 
 //sesion-plan entrenamiento
-Route::get('/sesionbloque', [SesionBloqueController::class, 'index']);
-Route::post('/sesionbloque/crear', [SesionBloqueController::class, 'store']); 
-Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'destroy']);
-
-// planer de entrenamiento (crear, borrar, ver)
-Route::get('/plan', [PlanController::class, 'index']); 
-Route::post('/plan/crear', [PlanController::class, 'store']); 
-Route::put('/plan/{id}', [PlanController::class, 'update']); 
-Route::delete('/plan/{id}', [PlanController::class, 'destroy']); 
-
-// resultados crear y ver
-Route::post('/resultado/crear', [ResultadoController::class, 'store']); 
-Route::get('/resultado/{id}', [ResultadoController::class, 'show']); 
+Route::get('/sesionbloque', [BloqueController::class, 'index']);
+Route::post('/sesionbloque/crear', [BloqueController::class, 'store']); 
+Route::delete('/sesionbloque/{id}', [BloqueController::class, 'destroy']);
