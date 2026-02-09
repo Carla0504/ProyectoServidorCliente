@@ -6,6 +6,25 @@
     <title>Registro</title>
 </head>
 <body>
-    
+    <div class="contenedor-registro">
+        <h2>Registro de usuario</h2>
+        
+        <form id="formulario-registro">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="apellido" placeholder="Apellido" required>
+            <input type="date" id="fecha_nacimiento" required>
+            
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            
+            <input type="number" id="peso_base" placeholder="Peso actual" required>
+            <input type="number" id="altura_base" placeholder="Altura actual" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <h3>¿Ya tienes cuenta?</h3>
+        <button type="submit">Iniciar Sesión</button>
+    </div>
 </body>
 </html>
