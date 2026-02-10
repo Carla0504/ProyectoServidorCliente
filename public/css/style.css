@@ -51,7 +51,6 @@ nav {
     flex-direction: column;
 }
 
-/* Mostrar submenú */
 #menu > li:hover .submenu {
     display: flex;
 }
