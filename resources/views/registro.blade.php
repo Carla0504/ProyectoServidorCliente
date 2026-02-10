@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" href="/css/inicio.css">
+    <script src="/js/registro.js"></script>
 </head>
 <body>
     <div class="inicio">
@@ -21,13 +22,11 @@
             <input type="number" id="peso_base" placeholder="Peso actual" required>
             <input type="number" id="altura_base" placeholder="Altura actual" required>
 
-            <button type="submit">Registrarse</button>
+            <button type="submit" id="registro">Registrarse</button>
         </form>
 
         <h3>¿Ya tienes cuenta?</h3>
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit" id="iniciar_sesion">Iniciar Sesión</button>
     </div>
-
-    <script src="/js/registro.js"></script>
 </body>
 </html>
