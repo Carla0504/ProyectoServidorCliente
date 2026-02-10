@@ -12,20 +12,11 @@
         <nav>
             <ul id="menu">
                 <li>Inicio</li>
-                <li>Bloques</li>
+                <li>Entrenamientos</li>
                 <div class="submenu">
-                    <p>Listar bloques</p>
-                    <p>Crear bloque</p>
-                </div>
-                <li>Sesiones</li>
-                <div class="submenu">
-                    <p>Listar sesiones</p>
-                    <p>Crear sesión</p>
-                </div>
-                <li>Planes</li>
-                <div class="submenu">
-                    <p>Listar planes</p>
-                    <p>Crear plan</p>
+                    <p>Bloques</p>
+                    <p>Sesiones</p>
+                    <p>Planes</p>
                 </div>
                 <li>Resultados</li>
                 <div class="submenu">
