@@ -12,23 +12,26 @@
         <nav>
             <ul id="menu">
                 <li>Inicio</li>
-                <li>Entrenamientos</li>
-                <div class="submenu">
-                    <p>Bloques</p>
-                    <p>Sesiones</p>
-                    <p>Planes</p>
-                </div>
-                <li>Resultados</li>
-                <div class="submenu">
-                    <p>Registrar resultado</p>
-                    <p>Consultar resultado</p>
-                </div>
-                <li>Usuario</li>
-                <div class="submenu">
-                    <p>Perfil</p>
-                    <p>Historico</p>
-                    <button type="submit">Cerrar Sesión</button>
-                </div>
+                <li>Entrenamientos
+                    <div class="submenu">
+                        <p>Bloques</p>
+                        <p>Sesiones</p>
+                        <p>Planes</p>
+                    </div>
+                </li>
+                <li>Resultados
+                    <div class="submenu">
+                        <p>Registrar resultado</p>
+                        <p>Consultar resultado</p>
+                    </div>
+                </li>
+                <li>Usuario
+                    <div class="submenu">
+                        <p>Perfil</p>
+                        <p>Historico</p>
+                        <button type="submit">Cerrar Sesión</button>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>

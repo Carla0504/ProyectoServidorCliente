@@ -30,15 +30,43 @@ nav {
     list-style: none;
     display: flex;
     gap: 25px;
-    position: relative;
 }
 
 #menu > li {
-    float: left;
+    position: relative;
+    padding: 14px 16px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
 }
 
-li p, .submenu {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 16px;
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #6bb7a8;
+    min-width: 180px;
+    border-radius: 5px;
+    flex-direction: column;
+}
+
+/* Mostrar submenú */
+#menu > li:hover .submenu {
+    display: flex;
+}
+
+.submenu p,
+.submenu button {
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+}
+
+.submenu p:hover,
+.submenu button:hover {
+    background-color: #5aa193;
 }
