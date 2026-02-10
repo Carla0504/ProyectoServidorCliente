@@ -15,7 +15,7 @@
             <input type="text" id="usuario" placeholder="Usuario o email" required>
             <input type="password" id="password" placeholder="Contraseña" required>
 
-            <button type="submit" id="enviar">Enviar</button>
+            <button type="submit" id="iniciar_sesion">Iniciar Sesión</button>
         </form>
 
         <h3>Si no te has registrado, hazlo ahora</h3>

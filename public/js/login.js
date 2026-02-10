@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let botonEnviar = document.getElementById('enviar');
+    let botonIniciarSesion = document.getElementById('iniciar_sesion');
     let botonRegistro = document.getElementById('registro');
     
-    if (botonEnviar) {
-        botonEnviar.addEventListener('click', function(e) {
-            e.preventDefault();
-            validarCredenciales();
-        });
-    } else if (botonRegistro) {
-        botonRegistro.addEventListener('click', function(e) {
-            e.preventDefault();
-            redirigirRegistro();
-        });
-    }
+    botonIniciarSesion.addEventListener('click', function(e) {
+        e.preventDefault();
+        validarCredenciales();
+    });
+    
+    botonRegistro.addEventListener('click', function(e) {
+        e.preventDefault();
+        redirigirRegistro();
+    });
 
     function validarCredenciales() {
         let usuario = document.getElementById('usuario').value;
