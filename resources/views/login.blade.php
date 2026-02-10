@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/css/inicio.css">
+    <script src="/js/login.js"></script>
 </head>
 <body>
     <div class="inicio">
         <h2>Iniciar sesión</h2>
         
         <form id="formulario-login">
-            <input type="text" id="usuario" placeholder="Email o usuario" required>
+            <input type="text" id="usuario" placeholder="Usuario o email" required>
             <input type="password" id="password" placeholder="Contraseña" required>
 
-            <button type="submit">Enviar</button>
+            <button type="submit" id="enviar">Enviar</button>
         </form>
 
         <h3>Si no te has registrado, hazlo ahora</h3>
         <button type="submit">Registrarse</button>
     </div>
-
-    <script src="/js/login.js"></script>
 </body>
 </html>
