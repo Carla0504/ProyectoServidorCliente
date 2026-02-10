@@ -19,7 +19,7 @@
         </form>
 
         <h3>Si no te has registrado, hazlo ahora</h3>
-        <button type="submit">Registrarse</button>
+        <button type="submit" id="registro">Registrarse</button>
     </div>
 </body>
 </html>

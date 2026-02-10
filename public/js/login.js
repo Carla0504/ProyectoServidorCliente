@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let boton = document.getElementById('enviar');
+    let botonEnviar = document.getElementById('enviar');
+    let botonRegistro = document.getElementById('registro');
     
-    if (boton) {
-        boton.addEventListener('click', function(e) {
+    if (botonEnviar) {
+        botonEnviar.addEventListener('click', function(e) {
             e.preventDefault();
             validarCredenciales();
+        });
+    } else if (botonRegistro) {
+        botonRegistro.addEventListener('click', function(e) {
+            e.preventDefault();
+            redirigirRegistro();
         });
     }
 
@@ -17,5 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Se han metido mal las credenciales');
         }
+    }
+
+    function redirigirRegistro() {
+        window.location.href = '/registro';
     }
 });
