@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens; //Coso de los tokens Ver si en clase dicen otra cosa
-
+use Laravel\Sanctum\HasApiTokens; //Coso de los tokens. Ver si en clase dicen otra cosa
+use HasApiTokens, HasFactory, Notifiable;//esto creo que hay que quitarlo
 
 class Ciclista extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'ciclista';
 

@@ -23,7 +23,7 @@ class BloqueEntrenamiento extends Model
         'comentario'
     ];
 
-    //Para las sesiones (N:M)
+    //Para las sesiones (N:M) 
     public function sesiones()
     {
         return $this->belongsToMany(SesionEntrenamiento::class, 'sesion_bloque', 'id_bloque_entrenamiento', 'id_sesion_entrenamiento')
