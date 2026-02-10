@@ -9,7 +9,8 @@ class BloqueEntrenamiento extends Model
 {
     use HasFactory;
 
-    protected $table = 'bloque_entrenamiento';
+    protected $table = 'bloque_entrenamiento';//tabla que va a utilizar
+    public $timestamps = false;
 
     protected $fillable = [
         'nombre',
@@ -27,6 +28,6 @@ class BloqueEntrenamiento extends Model
     public function sesiones()
     {
         return $this->belongsToMany(SesionEntrenamiento::class, 'sesion_bloque', 'id_bloque_entrenamiento', 'id_sesion_entrenamiento')
-                    ->withPivot('orden', 'repeticiones'); // Campos de la tabla intermedia [cite: 122]
+                    ->withPivot('orden', 'repeticiones'); //campos de la tabla intermedia
     }
 }
