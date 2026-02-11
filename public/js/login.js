@@ -16,11 +16,31 @@ document.addEventListener('DOMContentLoaded', function() {
         let usuario = document.getElementById('usuario').value;
         let password = document.getElementById('password').value;
 
-        if ((usuario === 'admin' || usuario === 'admin@gmail.com') && password === '1234') {
-            window.location.href = '/principal';
-        } else {
-            alert('Se han metido mal las credenciales');
-        }
+        fetch('/api/login',{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept':'application/json'
+            },
+            body: JSON.stringify({
+                email:email,
+                password:password
+            })
+        })
+        .then(function(response){
+            return response.json().then(function(data){
+                if(response.ok){
+                    localStorage.setItem('token', data.access_token);//aportacion de Henry
+                    window.location.href='/principal';                    
+                }else{
+                    alert(data.message || 'Error');
+                }
+            })
+        })
+        .catch(function(error){
+            console.error('Error:', error);
+            alert('No se ha podido conectar :(');
+        })
     }
 
     function redirigirRegistro() {
