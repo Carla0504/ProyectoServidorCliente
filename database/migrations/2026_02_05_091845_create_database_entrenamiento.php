@@ -139,7 +139,10 @@ class CreateDatabaseEntrenamiento extends Migration
             $table->boolean('activo')->default(true);
             $table->string('comentario', 255)->nullable();
 
-            $table->index(['id_bicicleta', 'id_tipo_componente', 'activo']);
+            $table->index(
+                ['id_bicicleta', 'id_tipo_componente', 'activo'],
+                'idx_comp_bici_tipo_act'
+            );
         });
 
          Schema::create('entrenamiento', function (Blueprint $table) {
