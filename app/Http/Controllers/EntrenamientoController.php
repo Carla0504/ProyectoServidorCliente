@@ -14,6 +14,6 @@ class EntrenamientoController extends Controller
             'ciclista' => 'required|string|max:255',
             'tipo_de_entrenamiento' => 'required|string|max:255',
 
-        ])
+        ]);
     }
 }
