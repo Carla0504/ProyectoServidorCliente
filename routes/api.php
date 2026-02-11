@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // aqui se importan los controllers
 // use App\Http\Controllers\ControllerQueSea;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BloqueController;
+use App\Http\Controllers\SesionEntrenamientoController;
 
 // rutas de autenticacion
 Route::post('/register', [UserController::class, 'register']); 
