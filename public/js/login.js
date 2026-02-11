@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function validarCredenciales() {
-        let usuario = document.getElementById('usuario').value;
+        let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
 
         fetch('/api/login',{
