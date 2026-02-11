@@ -33,6 +33,11 @@ class CiclistaController extends Controller
 
 
     public function login(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',//la coma por si acaso
+        ]);
+
         $ciclista = Ciclista::where('email', $request->email)->first();
 
         //si no existe o la contraaseña no es correcta da error
@@ -45,7 +50,6 @@ class CiclistaController extends Controller
 
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'Bearer',
             'user' => $ciclista
         ]);
     }
