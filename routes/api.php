@@ -4,14 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // aqui se importan los controllers
 // use App\Http\Controllers\ControllerQueSea;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CiclistaController;
 use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\SesionEntrenamientoController;
 
 // rutas de autenticacion
-Route::post('/register', [UserController::class, 'register']); 
-Route::post('/login', [UserController::class, 'login']); 
-Route::post('/logout', [UserController::class, 'logout']); 
+Route::post('/register', [CiclistaController::class, 'register']); 
+Route::post('/login', [CiclistaController::class, 'login']); 
+Route::post('/logout', [CiclistaController::class, 'logout']); 
 
 // bloques de entrenamiento (crear, borrar, ver)
 Route::get('/bloque', [BloqueController::class, 'index']); 
