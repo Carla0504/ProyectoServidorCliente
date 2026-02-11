@@ -5,7 +5,7 @@ use App\Models\Ciclista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; //cifrado
 
-class UserController extends Controller
+class CiclistaController extends Controller
 {
     //registro de ciclista 
     public function register(Request $request) {
@@ -33,6 +33,11 @@ class UserController extends Controller
 
 
     public function login(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',//la coma por si acaso
+        ]);
+
         $ciclista = Ciclista::where('email', $request->email)->first();
 
         //si no existe o la contraaseña no es correcta da error
@@ -45,7 +50,6 @@ class UserController extends Controller
 
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'Bearer',
             'user' => $ciclista
         ]);
     }

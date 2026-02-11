@@ -10,7 +10,7 @@ class BloqueEntrenamiento extends Model
     use HasFactory;
 
     protected $table = 'bloque_entrenamiento';//tabla que va a utilizar
-    public $timestamps = false;
+    public $timestamps = false;//dijo iker que lo meta
 
     protected $fillable = [
         'nombre',
