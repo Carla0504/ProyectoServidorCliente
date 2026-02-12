@@ -14,22 +14,22 @@
                 <li>Inicio</li>
                 <li>Entrenamientos
                     <div class="submenu">
-                        <p>Bloques</p>
-                        <p>Sesiones</p>
-                        <p>Planes</p>
+                        <p id="bloques">Bloques</p>
+                        <p id="sesiones">Sesiones</p>
+                        <p id="planes">Planes</p>
                     </div>
                 </li>
                 <li>Resultados
                     <div class="submenu">
-                        <p>Registrar resultado</p>
-                        <p>Consultar resultado</p>
+                        <p id="registrar_resultado">Registrar resultado</p>
+                        <p id="consultar_resultado">Consultar resultado</p>
                     </div>
                 </li>
                 <li>Usuario
                     <div class="submenu">
-                        <p>Perfil</p>
-                        <p>Historico</p>
-                        <button type="submit">Cerrar Sesión</button>
+                        <p id="perfil">Perfil</p>
+                        <p id="hidtorico">Historico</p>
+                        <button type="submit" id="cerrar_sesion">Cerrar Sesión</button>
                     </div>
                 </li>
             </ul>
