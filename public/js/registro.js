@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             redirigir();
         });
-    } else if (botonRegistro) {
+    } 
+    
+    if (botonRegistro) {
         botonRegistro.addEventListener('click', function(e) {
             e.preventDefault();
             crearUsuario();
@@ -25,10 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
             altura_base: document.getElementById('altura_base').value
         };
 
-        fetch("registro.php", {
+        fetch('/api/registro',{
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Accept':'application/json'
             },
             body: JSON.stringify(datosUsuario)
         })
@@ -38,23 +41,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
 
         .then(data => {
-            /**for (var i = 0; i < data.length; i++) {
-                nombre = data[i]["nombre"];
-                apellido = data[i]["apellido"];
-                fecha_nacimiento = data[i]["fecha_nacimiento"];
-                email = data[i]["email"];
-                password = data[i]["password"];
-                peso_base = data[i]["peso_base"];
-                altura_base = data[i]["altura_base"];
-
-                console.log("pintar usuario: " + nombre + " " + apellido);
-            }*/
-
+            console.log("Usuario creado correctamente", data);
             redirigir();
         })
 
         .catch(error => {
-            console.error("Error al obtener los usuarios:", error);
+            console.error("Error al registrar el usuario:", error);
         });
     }
 

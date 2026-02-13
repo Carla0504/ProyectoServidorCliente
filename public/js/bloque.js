@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({})
             })
             .then(function(response){
-                return response.json().then(function(data){
+                return response.json().then(function(response){
                     if(response.ok){
-                        localStorage.setItem('token', data.access_token);//aportacion de Henry
+                        localStorage.setItem('token', response.access_token);//aportacion de Henry
                         window.location.href='/principal';                    
                     }else{
-                        alert(data.message || 'Error');
+                        alert(response.message || 'Error');
                     }
                 })
             })

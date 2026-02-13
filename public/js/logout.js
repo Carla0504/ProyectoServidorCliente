@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
         .then(async response => {
-            console.log("Respuesta backend:", data);
+            console.log("Respuesta backend:", response);
 
             if (response.ok) {
                 localStorage.removeItem('token');
                 window.location.href='/';                    
             } else {
-                alert(data.message || 'Error');
+                alert(response.message || 'Error');
             }
         })
         .catch(function(error){
