@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class insercion_datos extends Seeder
 {
@@ -19,7 +20,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 70.5,
                 'altura_base' => 175,
                 'email' => 'test1@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Ana',
@@ -28,7 +29,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 60.0,
                 'altura_base' => 165,
                 'email' => 'test2@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Pedro',
@@ -37,7 +38,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 80.0,
                 'altura_base' => 180,
                 'email' => 'test3@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Carmen',
@@ -46,7 +47,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 55.0,
                 'altura_base' => 160,
                 'email' => 'test4@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Luis',
@@ -55,7 +56,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 62.0,
                 'altura_base' => 170,
                 'email' => 'test5@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Maria',
@@ -64,7 +65,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 62.0,
                 'altura_base' => 170,
                 'email' => 'test6@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
             [
                 'nombre' => 'Ricardo',
@@ -73,7 +74,7 @@ class insercion_datos extends Seeder
                 'peso_base' => 72.0,
                 'altura_base' => 170,
                 'email' => 'test7@prueba.com',
-                'password' => bcrypt('prueba'),
+                'password' => Hash::make('prueba'),
             ],
         ]);
 
