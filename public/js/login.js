@@ -16,9 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     fetch('/api/login',{
         method:'POST',
         headers:{
@@ -31,14 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
     .then(async response => {
-        const data = await response.json();
         console.log("Respuesta backend:", data);
 
-        if(response.ok){
+        if (response.ok) {
             localStorage.setItem('token', data.access_token);
             window.location.href='/principal';                    
-        }else{
-            alert(JSON.stringify(data));
+        } else {
+            alert(data.message || 'Error');
         }
     })
     .catch(function(error){
