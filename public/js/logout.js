@@ -1,0 +1,39 @@
+document.addEventListener('DOMContentLoaded', function() {
+    let botonCerrarSesion = document.getElementById('cerrar_sesion');
+    
+    botonCerrarSesion.addEventListener('click', function(e) {
+        e.preventDefault();
+        cerrarSesion();
+    });
+
+    function cerrarSesion() {
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+
+        fetch('/api/logout',{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept':'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then(async response => {
+            console.log("Respuesta backend:", data);
+
+            if (response.ok) {
+                localStorage.removeItem('token');
+                window.location.href='/';                    
+            } else {
+                alert(data.message || 'Error');
+            }
+        })
+        .catch(function(error){
+            console.error('Error:', error);
+            alert('No se ha podido conectar :(');
+        })
+    }
+});
