@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
     .then(async response => {
-        console.log("Respuesta backend:", data);
+        console.log("Respuesta backend:", response);
 
         if (response.ok) {
-            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('token', response.access_token);
             window.location.href='/principal';                    
         } else {
-            alert(data.message || 'Error');
+            alert('Error');
         }
     })
     .catch(function(error){
