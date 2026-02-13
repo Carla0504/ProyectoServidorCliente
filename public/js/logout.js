@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function cerrarSesion() {
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
-
         fetch('/api/logout',{
             method:'POST',
             headers:{
@@ -17,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Accept':'application/json'
             },
             body: JSON.stringify({
-                email: email,
-                password: password
             })
         })
         .then(async response => {
