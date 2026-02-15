@@ -12,7 +12,7 @@
         <h2>Iniciar sesión</h2>
         
         <form id="formulario-login">
-            <input type="text" id="email" placeholder="Email" required>
+            <input type="email" id="email" placeholder="Email" required>
             <input type="password" id="password" placeholder="Contraseña" required>
 
             <button type="submit" id="iniciar_sesion">Iniciar Sesión</button>
