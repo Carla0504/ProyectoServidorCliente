@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens; //Coso de los tokens. Ver si en clase dicen otra cosa
-use HasApiTokens, HasFactory, Notifiable;//esto creo que hay que quitarlo
+use Illuminate\Foundation\Auth\User as Authenticatable; 
+use Illuminate\Notifications\Notifiable;
+use App\Models\PlanEntrenamiento;
+//use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
 class Ciclista extends Authenticatable
 {
+    //use HasFactory, Notifiable; 
+    use Notifiable;
 
     protected $table = 'ciclista';
 
-    //campos que tiene el ciclista
     protected $fillable = [
         'nombre',
         'apellidos',
@@ -27,7 +29,6 @@ class Ciclista extends Authenticatable
         'remember_token',
     ];
 
-    //porque tiene mas de un plan (creo)
     public function planes()
     {
         return $this->hasMany(PlanEntrenamiento::class, 'id_ciclista');
