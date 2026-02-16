@@ -110,59 +110,184 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function crearBloque() {
-        let nombre = prompt('Ingrese el nombre del bloque:');
-        if (!nombre) {
-            alert('El nombre es obligatorio');
-            return;
-        }
+        let contenedor = document.getElementById('contenido');
+        contenedor.innerHTML = ''; // Limpiar contenido previo
 
-        let descripcion = prompt('Ingrese la descripción del bloque:');
+        let formulario = document.createElement('form');
         
-        let tipo = prompt('Tipo (rodaje, intervalos, fuerza, recuperacion, test):');
-        if (!tipo) {
-            alert('El tipo es obligatorio');
-            return;
+        // TITULO
+        let titulo = document.createElement('h2');
+        titulo.textContent = 'Crear nuevo bloque';
+        formulario.appendChild(titulo);
+
+        // NOMBRE
+        let nombreLabel = document.createElement('label');
+        nombreLabel.textContent = 'Nombre';
+        formulario.appendChild(nombreLabel);
+
+        let nombreInput = document.createElement('input');
+        nombreInput.type = 'text';
+        nombreInput.name = 'nombre';
+        nombreInput.required = true;
+        formulario.appendChild(nombreInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // DESCRIPCION
+        let descripcionLabel = document.createElement('label');
+        descripcionLabel.textContent = 'Descripcion';
+        formulario.appendChild(descripcionLabel);
+
+        let descripcionInput = document.createElement('input');
+        descripcionInput.type = 'text';
+        descripcionInput.name = 'descripcion';
+        descripcionInput.required = true;
+        formulario.appendChild(descripcionInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // TIPO
+        let tipoLabel = document.createElement('label');
+        tipoLabel.textContent = 'Tipo';
+        formulario.appendChild(tipoLabel);
+
+        let tipoSelect = document.createElement('select');
+        tipoSelect.name = 'tipo';
+        tipoSelect.required = true;
+
+        let opciones = ['rodaje', 'intervalos', 'fuerza', 'recuperacion', 'test'];
+
+        for (let i = 0; i < opciones.length; i++) {
+            let opcion = document.createElement('option');
+            opcion.value = opciones[i];
+            opcion.textContent = opciones[i];
+            tipoSelect.appendChild(opcion);
         }
 
-        let duracion_estimada = prompt('Ingrese la duración (formato HH:MM:SS, ej: 01:00:00):');
-        let potencia_pct_min = prompt('Ingrese la potencia mínima del bloque (en porcentaje):');
-        let potencia_pct_max = prompt('Ingrese la potencia máxima del bloque (en porcentaje):');
-        let pulso_pct_max = prompt('Ingrese el pulso máximo del bloque (en porcentaje):');
-        let pulso_reserva_pct = prompt('Ingrese el pulso de reserva del bloque (en porcentaje):');
-        let comentario = prompt('Ingrese un comentario para el bloque:');
+        formulario.appendChild(tipoSelect);
+        formulario.appendChild(document.createElement('br'));
 
-        fetch('/api/bloque/crear', {
+        // DURACION ESTIMADA
+        let duracionLabel = document.createElement('label');
+        duracionLabel.textContent = 'Duracion estimada';
+        formulario.appendChild(duracionLabel);
+
+        let duracionInput = document.createElement('input');
+        duracionInput.type = 'number';
+        duracionInput.name = 'duracion_estimada';
+        duracionInput.required = true;
+        formulario.appendChild(duracionInput);
+
+        formulario.appendChild(document.createElement('br'));
+        
+        // POTENCIA PCT MIN
+        let potenciaMinLabel = document.createElement('label');
+        potenciaMinLabel.textContent = 'Potencia pct min';
+        formulario.appendChild(potenciaMinLabel);
+
+        let potenciaMinInput = document.createElement('input');
+        potenciaMinInput.type = 'number';
+        potenciaMinInput.name = 'potencia_pct_min';
+        potenciaMinInput.required = true;
+        formulario.appendChild(potenciaMinInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // POTENCIA PCT MAX
+        let potenciaMaxLabel = document.createElement('label');
+        potenciaMaxLabel.textContent = 'Potencia pct max';
+        formulario.appendChild(potenciaMaxLabel);
+
+        let potenciaMaxInput = document.createElement('input');
+        potenciaMaxInput.type = 'number';
+        potenciaMaxInput.name = 'potencia_pct_max';
+        potenciaMaxInput.required = true;
+        formulario.appendChild(potenciaMaxInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // PULSO PCT MAX
+        let pulsoMaxLabel = document.createElement('label');
+        pulsoMaxLabel.textContent = 'Pulso pct max';
+        formulario.appendChild(pulsoMaxLabel);
+
+        let pulsoMaxInput = document.createElement('input');
+        pulsoMaxInput.type = 'number';
+        pulsoMaxInput.name = 'pulso_pct_max';
+        pulsoMaxInput.required = true;
+        formulario.appendChild(pulsoMaxInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // PULSO RESERVA PCT
+        let pulsoReservaLabel = document.createElement('label');
+        pulsoReservaLabel.textContent = 'Pulso reserva pct';
+        formulario.appendChild(pulsoReservaLabel);
+
+        let pulsoReservaInput = document.createElement('input');
+        pulsoReservaInput.type = 'number';
+        pulsoReservaInput.name = 'pulso_reserva_pct';
+        pulsoReservaInput.required = true;
+        formulario.appendChild(pulsoReservaInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // COMENTARIO
+        let comentarioLabel = document.createElement('label');
+        comentarioLabel.textContent = 'Comentario';
+        formulario.appendChild(comentarioLabel);
+
+        let comentarioInput = document.createElement('input');
+        comentarioInput.type = 'text';
+        comentarioInput.name = 'comentario';
+        comentarioInput.required = false;
+        formulario.appendChild(comentarioInput);
+
+        formulario.appendChild(document.createElement('br'));
+
+        // BOTON CREAR
+        let botonCrear = document.createElement('button');
+        botonCrear.type = 'submit';
+        botonCrear.textContent = 'Crear';
+        formulario.appendChild(botonCrear);
+
+        // BOTON CANCELAR
+        let botonCancelar = document.createElement('button');
+        botonCancelar.type = 'button';
+        botonCancelar.textContent = 'Cancelar';
+        botonCancelar.addEventListener('click', () => cargarBloques());
+        formulario.appendChild(botonCancelar);
+
+        // Agregar el formulario al contenedor
+        contenedor.appendChild(formulario);
+
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let datos = Object.fromEntries(new FormData(formulario));
+
+            fetch('/api/bloque/crear', {
                 method:'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept':'application/json',
                 },
-                body: JSON.stringify({
-                    nombre: nombre,
-                    descripcion: descripcion,
-                    tipo: tipo,
-                    duracion_estimada: duracion_estimada,
-                    potencia_pct_min: potencia_pct_min,
-                    potencia_pct_max: potencia_pct_max,
-                    pulso_pct_max: pulso_pct_max,
-                    pulso_reserva_pct: pulso_reserva_pct,
-                    comentario: comentario
-                })
+                body: JSON.stringify(datos)
             })
-            .then(function(response) {
-                return response.json().then(function(data) {
+            .then(response => {
+                return response.json().then(data => {
                     if(response.ok) {
-                        cargarBloques(); // Recargar la tabla después de crear el bloque
+                        alert('Bloque creado correctamente');
+                        cargarBloques();
                     } else {
                         alert(data.message || 'Error');
                     }
                 })
             })
-            .catch(function(error) {
-                console.error('Error:', error);
+            .catch(() => {
                 alert('Error al crear el bloque');
-            })
+            });
+        });
     }
 
     function eliminarBloque(id) {
