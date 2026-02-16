@@ -3,12 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
+use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
 
 class SesionEntrenamiento extends Model
 {
-    use HasFactory;
-
     protected $table = 'sesion_entrenamiento';
 
     protected $fillable = [

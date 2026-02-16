@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SesionEntrenamientoController extends Controller
 {
-    public function index(Request $request) {
+    public function listDetails(Request $request) {
         //scroll infinito lo que hicimos con la travellist
         $offset = $request->query('offset', 0);
         $limit = $request->query('limit', 10);
@@ -20,14 +20,23 @@ class SesionEntrenamientoController extends Controller
         return response()->json($sesiones);
     }
 
-    public function store(Request $request) {
+    public function create(Request $request) {
         $sesion = SesionEntrenamiento::create($request->all());
         return response()->json($sesion, 201);
     }
 
-    public function show($id) {
+    public function get($id) {
         $sesion = SesionEntrenamiento::with('bloques')->find($id);
         if (!$sesion) return response()->json(['message' => 'No encontrado'], 404);
         return response()->json($sesion);
+    }
+
+    public function destroy(SesionEntrenamiento $sesion_entrenamiento)
+    {
+        $sesion_entrenamiento->delete();
+
+        return response()->json([
+            "message" => "Sesion eliminado correctamente"
+        ]);
     }
 }

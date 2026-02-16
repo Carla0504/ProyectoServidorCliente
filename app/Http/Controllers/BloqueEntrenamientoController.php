@@ -19,7 +19,7 @@ class BloqueEntrenamientoController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'tipo' => 'required|string|max:255',
-            'duracion_estimada'=> 'required', //no se validar ints miralo
+            'duracion_estimada'=> 'required|numeric',
             'potencia_pct_min'=>'required|numeric',
             'potencia_pct_max'=>'required|numeric',
             'pulso_pct_max'=>'required|numeric',

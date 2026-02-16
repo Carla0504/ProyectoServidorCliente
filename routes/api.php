@@ -35,8 +35,8 @@ Route::get('/sesion/{id}', [SesionEntrenamientoController::class, 'get']);
 Route::delete('/sesion/{id}', [SesionEntrenamientoController::class, 'destroy']);
 
 // resultado de entrenamiento (ver, crear)
-Route::get('/resultado/crear', [ResultadoEntrenamientoController::class, 'listDetails']);
-Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'create']);
+Route::post('/resultado/crear', [ResultadoEntrenamientoController::class, 'create']);
+Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'get']);
 
 //sesion-plan entrenamiento (listar, crear, borrar)
 Route::get('/sesionbloque', [SesionPlanEntrenamientoController::class, 'listDetails']);
