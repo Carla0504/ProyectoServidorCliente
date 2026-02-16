@@ -69,3 +69,140 @@ nav {
 .submenu button:hover {
     background-color: #5aa193;
 }
+
+main {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#contenido {
+    width: 95%;
+    max-width: 1200px;
+}
+
+#contenido > button {
+    background-color: #6bb7a8;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+#contenido > button:hover {
+    background-color: #5aa193;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #6bb7a8;
+    color: white;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e0f2ef;
+}
+
+td button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+td button:hover {
+    background-color: #e04f4f;
+}
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6bb7a8;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #6bb7a8;
+    outline: none;
+}
+
+form button {
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button[type="submit"] {
+    background-color: #6bb7a8;
+    color: white;
+}
+
+form button[type="submit"]:hover {
+    background-color: #5aa193;
+}
+
+form button[type="button"] {
+    background-color: #aaa;
+    color: white;
+}
+
+form button[type="button"]:hover {
+    background-color: #888;
+}
