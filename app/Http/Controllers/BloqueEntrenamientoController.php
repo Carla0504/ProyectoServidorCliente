@@ -17,14 +17,14 @@ class BloqueEntrenamientoController extends Controller
     public function create(Request $request){
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string|max:255',
+            'descripcion' => 'required|string|max:255',
             'tipo' => 'required|string|max:255',
-            'duracion_estimada'=> 'nullable', //no se validar ints miralo
-            'potencia_pct_min'=>'nullable|numeric',
-            'potencia_pct_max'=>'nullable|numeric',
-            'pulso_pct_max'=>'nullable|numeric',
-            'pulso_reserva_pct'=>'nullable|numeric',
-            'comentario' => 'nullable|string|max:255',//en el coso de laravel pone que en body se pone asi asique suponemos que aqui tambien
+            'duracion_estimada'=> 'required', //no se validar ints miralo
+            'potencia_pct_min'=>'required|numeric',
+            'potencia_pct_max'=>'required|numeric',
+            'pulso_pct_max'=>'required|numeric',
+            'pulso_reserva_pct'=>'required|numeric',
+            'comentario' => 'required|string|max:255',//en el coso de laravel pone que en body se pone asi asique suponemos que aqui tambien
         ]);
 
         $bloque = BloqueEntrenamiento::create($data);
