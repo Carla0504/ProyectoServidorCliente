@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\BloqueEntrenamiento;
 use Illuminate\Http\Request;
 
 class BloqueEntrenamientoController extends Controller
@@ -21,7 +21,7 @@ class BloqueEntrenamientoController extends Controller
 
         if ($data->fails()) return response()->json($data->errors(), 400);
 
-        $data => BloqueEntrenamiento::create([
+        $data = BloqueEntrenamiento::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'tipo' => $request->tipo,
@@ -35,7 +35,37 @@ class BloqueEntrenamientoController extends Controller
         return response()->json(['message'=>'Bloque creado']);
     }
 
+    public function get($id) {
+        $data = [];
+
+        if (isset($id))
+            $data = BloqueEntrenamiento::query()->
+                where('id', $id)->
+                get();
+
+        return response()->json($data);
+    }
+
     public function listDetails(){
-        $data => BloqueEntrenamiento::all();
+        $data = BloqueEntrenamiento::all();
+
+        return response()->json($data);
+    }
+
+    public function destroy(Request $request, BloqueEntrenamiento $data) {
+        try {
+            $data->delete();
+            $response = [
+                "status" => "ok",
+                "message" => "Bloque eliminado correctamente"
+            ];
+            return response()->json($response);
+        } catch (Exception $e) {
+            $response = [
+                "status" => "error",
+                "message" => $e->getMessage()
+            ];
+            return response()->json($response);
+        }
     }
 }

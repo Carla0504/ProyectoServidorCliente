@@ -3,12 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\Factories\HasFactory; //no es seguro si esto se queda o no
+use Illuminate\Database\Eloquent\Factories\HasFactory; //no es seguro si esto se queda o no
 
 class BloqueEntrenamiento extends Model
 {
-    use HasFactory;
-
     protected $table = 'bloque_entrenamiento';//tabla que va a utilizar
     public $timestamps = false;//dijo iker que lo meta
 

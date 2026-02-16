@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(response){
                 return response.json().then(function(response){
                     if(response.ok){
-                        localStorage.setItem('token', response.access_token);//aportacion de Henry
-                        window.location.href='/principal';                    
+                        /*localStorage.setItem('token', response.access_token);//aportacion de Henry
+                        window.location.href='/principal';*/
+                        console.log(response);                    
                     }else{
                         alert(response.message || 'Error');
                     }
