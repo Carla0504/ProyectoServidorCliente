@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function cerrarSesion() {
         fetch('/api/logout',{
             method:'POST',
-            headers:{
+            credentials: 'include',
+            headers: {
                 'Content-Type': 'application/json',
-                'Accept':'application/json'
+                'Accept':'application/json',
+                'X-Requested-With': 'XMLHttpRequest', //esto es para que laravel gestione bien la sesion
             },
             body: JSON.stringify({
             })
@@ -20,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Respuesta backend:", response);
 
             if (response.ok) {
-                localStorage.removeItem('token');
-                window.location.href='/';                    
+                window.location.href='../';                    
             } else {
                 alert(response.message || 'Error');
             }

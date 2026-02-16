@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch('/api/login', {
             method: 'POST',
+            credentials: 'include', //esto es para que laravel gestione bien la sesion
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
