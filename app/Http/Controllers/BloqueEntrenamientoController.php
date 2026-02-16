@@ -21,7 +21,7 @@ class BloqueEntrenamientoController extends Controller
 
         if ($data->fails()) return response()->json($data->errors(), 400);
 
-        $data => BloqueEntrenamiento::create([
+        $data => BloqueEntrenamiento::create([//prueba
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'tipo' => $request->tipo,
