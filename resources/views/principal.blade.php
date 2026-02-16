@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página principal</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/logout.js"></script>
+    <script src="/js/bloque.js"></script>
+    <script src="/js/historico.js"></script>
+    <script src="/js/perfil.js"></script>
+    <script src="/js/planes.js"></script>
+    <script src="/js/resultados.js"></script>
+    <script src="/js/sesiones.js"></script>
 </head>
 <body>
     <header>
@@ -37,9 +44,7 @@
     </header>
     
     <main>
-    <!-- Foto ciclistas -->
-    
-    <!-- Breve información de la página -->
+        <div id="contenido"></div>
     </main>
     
     <footer></footer>
