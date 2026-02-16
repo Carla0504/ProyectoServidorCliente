@@ -46,20 +46,12 @@ class BloqueEntrenamientoController extends Controller
         return response()->json($data);
     }
 
-    public function destroy(Request $request, BloqueEntrenamiento $data) {
-        try {
-            $data->delete();
-            $response = [
-                "status" => "ok",
-                "message" => "Bloque eliminado correctamente"
-            ];
-            return response()->json($response);
-        } catch (Exception $e) {
-            $response = [
-                "status" => "error",
-                "message" => $e->getMessage()
-            ];
-            return response()->json($response);
-        }
+    public function destroy(BloqueEntrenamiento $bloque_entrenamiento)
+    {
+        $bloque_entrenamiento->delete();
+
+        return response()->json([
+            "message" => "Bloque eliminado correctamente"
+        ]);
     }
 }

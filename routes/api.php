@@ -17,7 +17,7 @@ Route::post('/logout', [CiclistaController::class, 'logout']);
 Route::get('/bloque', [BloqueEntrenamientoController::class, 'listDetails']); 
 Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'create']); 
 Route::get('/bloque/{id}', [BloqueEntrenamientoController::class, 'get']); 
-Route::delete('/bloque/{id}/eliminar', [BloqueEntrenamientoController::class, 'destroy']); 
+Route::delete('/bloque/{bloque_entrenamiento}/eliminar', [BloqueEntrenamientoController::class, 'destroy']); 
 
 // sesiones de entrenamiento (crear, borrar, ver)
 Route::get('/sesion', [SesionEntrenamientoController::class, 'listDetails']);

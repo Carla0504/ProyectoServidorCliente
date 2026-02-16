@@ -291,28 +291,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function eliminarBloque(id) {
-        if (confirm('¿Estás seguro de que quieres eliminar este bloque?')) {
-            fetch(`/api/bloque/${id}`, {
-                method: 'DELETE',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
+        if (!confirm('¿Estás seguro de que quieres eliminar este bloque?')) {
+            return;
+        }
+        
+        fetch(`/api/bloque/${id}/eliminar`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+        .then(response => {
+            return response.json().then(data => {
+                if(response.ok) {
+                    cargarBloques(); // Recargar la tabla después de eliminar el bloque
+                } else {
+                    alert(data.message || 'Error');
                 }
             })
-            .then(function(response) {
-                return response.json().then(function(data) {
-                    if(response.ok) {
-                        cargarBloques(); // Recargar la tabla después de eliminar el bloque
-                    } else {
-                        alert(data.message || 'Error');
-                    }
-                })
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-                alert('Erro al eliminar el bloque');
-            });
-        }
+        })
+        .catch(() => {
+            alert('Error al eliminar el bloque');
+        });
     }
 });
