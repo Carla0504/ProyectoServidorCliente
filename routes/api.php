@@ -20,7 +20,7 @@ Route::post('/logout', [CiclistaController::class, 'logout']);
 Route::get('/bloque', [BloqueEntrenamientoController::class, 'listDetails']); 
 Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'create']); 
 Route::get('/bloque/{id}', [BloqueEntrenamientoController::class, 'get']); 
-Route::delete('/bloque/{id}/eliminar', [BloqueEntrenamientoController::class, 'destroy']); 
+Route::delete('/bloque/{id}', [BloqueEntrenamientoController::class, 'destroy']); 
 
 // planes de entrenamiento (crear, borrar, modificar, listar)
 Route::get('/plan', [PlanEntrenamientoController::class, 'listDetails']);
