@@ -7,27 +7,45 @@ use Illuminate\Http\Request;
 
 class SesionEntrenamientoController extends Controller
 {
-    public function index(Request $request) {
-        //scroll infinito lo que hicimos con la travellist
-        $offset = $request->query('offset', 0);
-        $limit = $request->query('limit', 10);
+    public function listDetails(){
+        $data = SesionEntrenamiento::all();
 
-        $sesiones = SesionEntrenamiento::with('bloques') //carda bloques relacionados
-            ->skip($offset)
-            ->take($limit)
-            ->get();
+        return response()->json($data);
+    }
+    
+    public function create(Request $request){
+        $data = $request->validate([
+            'fecha' => 'required|date',
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:255',
+            'completa' => 'required|boolean'
+        ]);
 
-        return response()->json($sesiones);
+        $plan = SesionEntrenamiento::create($data);
+
+        return response()->json([
+            'message'=>'Plan creado correctamente',
+            'data' => $plan 
+        ], 201);
     }
 
-    public function store(Request $request) {
-        $sesion = SesionEntrenamiento::create($request->all());
-        return response()->json($sesion, 201);
+    public function get($id) {
+        $data = [];
+
+        if (isset($id))
+            $data = SesionEntrenamiento::query()->
+                where('id', $id)->
+                get();
+
+        return response()->json($data);
     }
 
-    public function show($id) {
-        $sesion = SesionEntrenamiento::with('bloques')->find($id);
-        if (!$sesion) return response()->json(['message' => 'No encontrado'], 404);
-        return response()->json($sesion);
+    public function destroy(SesionEntrenamiento $sesion_entrenamiento)
+    {
+        $sesion_entrenamiento->delete();
+
+        return response()->json([
+            "message" => "Sesión eliminada correctamente"
+        ]);
     }
 }
