@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             valores.forEach(valor => {
                 let td = document.createElement('td');
-                td.textContent = valor ?? '-'; // esto es para que si algun valor es null se muestre un guion
+                td.textContent = valor;
                 fila.appendChild(td);
             });
 
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        fetch(`/api/bloque/${id}/eliminar`, {
+        fetch(`/api/bloque/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
