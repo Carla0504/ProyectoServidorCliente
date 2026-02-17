@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let bloque = document.getElementById('bloques');
+    let sesiones = document.getElementById('sesiones');
     
-    if (bloque) {
-        bloque.addEventListener('click', function(e) {
+    if (sesiones) {
+        sesiones.addEventListener('click', function(e) {
             e.preventDefault();
             cargarSesiones();
         });

@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        fetch(`/api/plan/${id}/eliminar`, {
+        fetch(`/api/plan/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
