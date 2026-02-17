@@ -39,19 +39,15 @@ class CiclistaController extends Controller
 
         $ciclista = Ciclista::where('email', $request->email)->first();
 
-        if (!$ciclista) {
-            return response()->json(['message' => 'El email no existe en la BD'], 401);
+        if (!$ciclista || !Hash::check($request->password, $ciclista->password)) {
+            return response()->json(['message' => 'Credenciales inválidas'], 401);
         }
 
-        if (!Hash::check($request->password, $ciclista->password)) {
-            return response()->json([
-                'message' => 'La contraseña no coincide con el hash de la BD',
-                'hash_en_bd' => $ciclista->password // Si aquí ves "prueba", ya sabes que ese es el error
-            ], 401);
-        }
-
-        // Si llega aquí, todo está bien
         $request->session()->put('ciclista_id', $ciclista->id);
+    
+        // Esto asegura que la sesión es nueva y segura
+        $request->session()->regenerate(); 
+
         return response()->json(['message' => 'Login correcto']);
     }
 
