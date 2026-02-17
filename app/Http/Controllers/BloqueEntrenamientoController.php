@@ -19,12 +19,12 @@ class BloqueEntrenamientoController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'tipo' => 'required|string|max:255',
-            'duracion_estimada'=> 'required', //no se validar ints miralo
+            'duracion_estimada'=> 'required|integer|min:1', //no se validar ints miralo
             'potencia_pct_min'=>'required|numeric',
             'potencia_pct_max'=>'required|numeric',
             'pulso_pct_max'=>'required|numeric',
             'pulso_reserva_pct'=>'required|numeric',
-            'comentario' => 'required|string|max:255',//en el coso de laravel pone que en body se pone asi asique suponemos que aqui tambien
+            'comentario' => 'nullable|string|max:255',//en el coso de laravel pone que en body se pone asi asique suponemos que aqui tambien
         ]);
 
         $bloque = BloqueEntrenamiento::create($data);
@@ -46,9 +46,11 @@ class BloqueEntrenamientoController extends Controller
         return response()->json($data);
     }
 
-    public function destroy(Request $request, BloqueEntrenamiento $data) {
+    public function destroy($id) {
         try {
-            $data->delete();
+            $bloque = BloqueEntrenamiento::findOrFail($id);
+            $bloque->delete();
+            
             $response = [
                 "status" => "ok",
                 "message" => "Bloque eliminado correctamente"
