@@ -39,17 +39,20 @@ class CiclistaController extends Controller
 
         $ciclista = Ciclista::where('email', $request->email)->first();
 
-        if (!$ciclista || !Hash::check($request->password, $ciclista->password)) {
-            return response()->json(['message' => 'Credenciales inválidas']);//,401 -> esto daba el error, siento los dolores de cabeza guapetones
+        if (!$ciclista) {
+            return response()->json(['message' => 'El email no existe en la BD'], 401);
         }
-        // Esto equivale al session_start() y $_SESSION['user'] = ... que es la session que utiliza laravel
-        $request->session()->put('ciclista_id', $ciclista->id);//guarda id ciclista
-        $request->session()->put('ciclista_nombre', $ciclista->nombre);//guarda nombre ciclista
 
-        return response()->json([
-            'message' => 'Login correcto',
-            'user' => $ciclista
-        ]);
+        if (!Hash::check($request->password, $ciclista->password)) {
+            return response()->json([
+                'message' => 'La contraseña no coincide con el hash de la BD',
+                'hash_en_bd' => $ciclista->password // Si aquí ves "prueba", ya sabes que ese es el error
+            ], 401);
+        }
+
+        // Si llega aquí, todo está bien
+        $request->session()->put('ciclista_id', $ciclista->id);
+        return response()->json(['message' => 'Login correcto']);
     }
 
     //borra el token para salie de la sesion
