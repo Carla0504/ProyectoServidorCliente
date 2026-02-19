@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let email = document.getElementById('email').value.trim();
         let password = document.getElementById('password').value;
         
-        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        //let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         //validacion basica
         if (!email || !password) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         botonIniciarSesion.disabled = true;
         botonIniciarSesion.textContent = 'Iniciando sesión';
 
-        fetch('/login', {
+        fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
