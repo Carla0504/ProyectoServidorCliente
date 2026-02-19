@@ -32,6 +32,6 @@ class ResultadoEntrenamiento extends Model
 
     //la relacion para el id
     public function ciclista(){
-        return $this->belongTo(Cliclista::class, 'id_ciclista');
+        return $this->belongsTo(Cliclista::class, 'id_ciclista');
     }
 }

@@ -18,7 +18,7 @@ class ResultadoEntrenamientoController extends Controller
             'kilometros' => 'required|numeric'
         ]);
 
-        $resultado = Entrenamiento::create([
+        $resultado = ResultadoEntrenamiento::create([
             'id_ciclista' => $ciclistaId,
             'id_bicicleta' => $request->id_bicicleta,
             'id_sesion' => $request->id_sesion,
@@ -35,7 +35,7 @@ class ResultadoEntrenamientoController extends Controller
     }
 
     public function getResultados($id) {
-        $usuarioId = session()->get('ciclista_id');
+        $ciclistaId = session()->get('ciclista_id');
 
         if(!$ciclistaId){
             return response()->json(['message' => 'No autorizafo'], 401);
