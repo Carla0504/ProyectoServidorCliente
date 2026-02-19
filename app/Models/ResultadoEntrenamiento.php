@@ -8,9 +8,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se qu
 class ResultadoEntrenamiento extends Model
 {
     // no tiene tabla
-    //protected $table = 'sesion_entrenamiento';
+    protected $table = 'historico_entrenamiento';
 
     protected $fillable = [
         // faltan campos
+        'id_ciclista',
+        'id_bicicleta',
+        'id_sesion',
+        'fecha',
+        'duracion',
+        'kilometros',
+        'recorrido',
+        'pulso_medio',
+        'pulso_max',
+        'potencia_media',
+        'potencia_normalizada',
+        'velocidad_media',
+        'puntos_estres_tss',
+        'factor_intensidad_if',
+        'ascenso_metros',
+        'comentario'
     ];
+
+    //la relacion para el id
+    public function ciclista(){
+        return $this->belongTo(Cliclista::class, 'id_ciclista');
+    }
 }
