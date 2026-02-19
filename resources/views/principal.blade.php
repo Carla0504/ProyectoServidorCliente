@@ -35,7 +35,7 @@
                 <li>Usuario
                     <div class="submenu">
                         <p id="perfil">Perfil</p>
-                        <p id="hidtorico">Historico</p>
+                        <p id="historico">Historico</p>
                         <button type="submit" id="cerrar_sesion">Cerrar Sesión</button>
                     </div>
                 </li>
