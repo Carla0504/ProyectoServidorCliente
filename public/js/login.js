@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function validarCredenciales() {
         let email = document.getElementById('email').value.trim();
         let password = document.getElementById('password').value;
+        
+        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         //validacion basica
         if (!email || !password) {
@@ -58,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         })
-        .catch(function(error){
+        .catch(error => {
             console.error('Error:', error);
             alert('No se ha podido conectar con el servidor');
         })
