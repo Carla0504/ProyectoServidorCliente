@@ -31,7 +31,7 @@ class CiclistaController extends Controller
         if (!$ciclista || !Hash::check($request->password, $ciclista->password)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Credenciales incorrectas'
+                'message' => 'Credenciales incorrectas' . $ciclista->password
             ], 401);
         }
 

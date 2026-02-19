@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         botonIniciarSesion.disabled = true;
         botonIniciarSesion.textContent = 'Iniciando sesión';
 
-        fetch('/api/login', {
+        fetch('api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
