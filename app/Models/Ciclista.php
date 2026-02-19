@@ -14,6 +14,9 @@ class Ciclista extends Authenticatable
 
     protected $table = 'ciclista';
 
+    public $timestamps = false;
+
+
     protected $fillable = [
         'nombre',
         'apellidos',
@@ -25,12 +28,16 @@ class Ciclista extends Authenticatable
     ];
 
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password'
     ];
 
     public function planes()
     {
         return $this->hasMany(PlanEntrenamiento::class, 'id_ciclista');
+    }
+
+    public function sesionesEntrenamiento()
+    {
+        return $this->hasMany(SesionEntrenamiento::class, 'ciclista_id');
     }
 }
