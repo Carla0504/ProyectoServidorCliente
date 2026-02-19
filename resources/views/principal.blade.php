@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página principal</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="/js/logout.js"></script>
-    <script src="/js/bloque.js"></script>
-    <script src="/js/historico.js"></script>
-    <script src="/js/perfil.js"></script>
-    <script src="/js/planes.js"></script>
-    <script src="/js/resultados.js"></script>
-    <script src="/js/sesiones.js"></script>
+    <script pt src="{{ asset('js/logout.js') }}"></script>
+    <script src="{{ asset('js/bloque.js') }}"></script>
+    <script src="{{ asset('js/perfil.js') }}"></script>
+    <script src="{{ asset('js/planes.js') }}"></script>
+    <script src="{{ asset('js/resultados.js') }}"></script>
+    <script src="{{ asset('js/sesiones.js') }}"></script>
+    <script src="{{ asset('js/historico.js') }}"></script>
 </head>
 <body>
     <header>
