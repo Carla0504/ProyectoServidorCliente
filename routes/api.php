@@ -29,14 +29,15 @@ Route::put('/plan/{id}', [PlanEntrenamientoController::class, 'update']);
 Route::delete('/plan/{id}', [PlanEntrenamientoController::class, 'destroy']); 
 
 // sesiones de entrenamiento (crear, borrar, ver)
-Route::get('/sesion', [SesionEntrenamientoController::class, 'listDetails']);
+Route::get('/sesion', [SesionEntrenamientoController::class, 'renderizarTabla']);
 Route::post('/sesion/crear', [SesionEntrenamientoController::class, 'create']); 
 Route::get('/sesion/{id}', [SesionEntrenamientoController::class, 'get']); 
 Route::delete('/sesion/{id}', [SesionEntrenamientoController::class, 'destroy']);
 
 // resultado de entrenamiento (ver, crear)
-Route::get('/resultado/crear', [ResultadoEntrenamientoController::class, 'listDetails']);
-Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'create']);
+Route::get('/resultado/crear', [ResultadoEntrenamientoController::class, 'create']);
+Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'verDetalle']);
+Route::get('/resultado', [ResultadoEntrenamientoController::class, 'cargarHistorico']);
 
 //sesion-plan entrenamiento (listar, crear, borrar)
 Route::get('/sesionbloque', [SesionPlanEntrenamientoController::class, 'listDetails']);
