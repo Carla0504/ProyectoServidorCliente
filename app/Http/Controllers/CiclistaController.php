@@ -32,23 +32,26 @@ class CiclistaController extends Controller
 
 
     public function login(Request $request) {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+       $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required|min:6',
+        ], [
+            'email.required' => 'El correo es necesario para entrar.',
+            'password.min'   => 'La contraseña debe tener al menos 6 caracteres.'
         ]);
 
-        $ciclista = Ciclista::where('email', $request->email)->first();
-
-        if (!$ciclista || !Hash::check($request->password, $ciclista->password)) {
-            return response()->json(['message' => 'Credenciales inválidas'], 401);
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            $request->session()->regenerate(); 
+            return response()->json([
+                'status' => 'success',
+                'message' => '¡Bienvenido, ciclista!',
+                'redirect' => route('home') 
+            ]);
         }
 
-        $request->session()->put('ciclista_id', $ciclista->id);
-    
-        // Esto asegura que la sesión es nueva y segura
-        $request->session()->regenerate(); 
-
-        return response()->json(['message' => 'Login correcto']);
+        return response()->json([
+            'errors' => ['login' => ['Las credenciales no coinciden con nuestros registros.']]
+        ], 422);
     }
 
     //borra el token para salie de la sesion

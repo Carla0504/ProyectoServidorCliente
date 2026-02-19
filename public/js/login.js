@@ -13,33 +13,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function validarCredenciales() {
-        let email = document.getElementById('email').value;
+         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
+        
+        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'//esto es para que laravel gestione bien la sesion
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': token // Laravel lo valida aquí
             },
             body: JSON.stringify({
                 email: email,
                 password: password
             })
         })
-        .then(function(response) {
-            return response.json().then(function(data) {
-                if (response.ok) {
-                    window.location.href = '/principal';                    
-                } else {
-                    alert(data.message || 'Error');
-                }
-            });
+        .then(response => response.json().then(data => ({ status: response.status, body: data })))
+        .then(res => {
+            if (res.status === 200) {
+                window.location.href = '/principal';                    
+            } else if (res.status === 422) {
+                let mensajes = Object.values(res.body.errors).flat().join('\n');
+                alert("Errores de validación:\n" + mensajes);
+            } else {
+                alert(res.body.message || 'Credenciales incorrectas');
+            }
         })
-        .catch(function(error){
+        .catch(error => {
             console.error('Error:', error);
-            alert('No se ha podido conectar :(');
+            alert('No se ha podido conectar con el servidor');
         });
     }
 

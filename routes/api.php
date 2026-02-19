@@ -13,8 +13,7 @@ use App\Http\Controllers\SesionPlanEntrenamientoController;
 
 // rutas de autenticacion
 Route::post('/register', [CiclistaController::class, 'register']); 
-Route::post('/login', [CiclistaController::class, 'login']); 
-Route::post('/logout', [CiclistaController::class, 'logout']); 
+Route::post('/login-ciclista', [ciclistaController::class, 'login'])->name('ciclista.login');Route::post('/logout', [CiclistaController::class, 'logout']); 
 
 // bloques de entrenamiento (crear, borrar, ver, listar)
 Route::get('/bloque', [BloqueEntrenamientoController::class, 'listDetails']); 
