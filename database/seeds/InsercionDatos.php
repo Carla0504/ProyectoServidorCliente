@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class insercion_datos extends Seeder
+class InsercionDatos extends Seeder
 {
     public function run()
     {
