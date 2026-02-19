@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Ciclista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\HistoricoCiclista;
 
 class CiclistaController extends Controller
 {
@@ -142,5 +143,22 @@ class CiclistaController extends Controller
         return response()->json([
             'logueado' => false
         ]);
+    }
+
+    public function mostrarHistoricoCiclista()
+    {
+        session_start();
+
+        if (!isset($_SESSION['ciclista_id'])) {
+            return response()->json(['message' => 'No autorizado'], 401);
+        }
+
+        $ciclistaId = $_SESSION['ciclista_id'];
+
+        $historico = HistoricoCiclista::where('id_ciclista', $ciclistaId)
+                        ->orderBy('fecha', 'desc')
+                        ->get();
+
+        return response()->json($historico);
     }
 }

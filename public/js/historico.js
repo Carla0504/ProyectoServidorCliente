@@ -1,50 +1,93 @@
 //hay que cambiar los innerHTML lo sé
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarHistorico();
+document.addEventListener('DOMContentLoaded', function() {
+    let historico = document.getElementById('historico');
+    
+    if (historico) {
+        historico.addEventListener('click', function(e) {
+            e.preventDefault();
+            cargarHistorico();
+        });
+    }
 });
 
 
-async function cargarHistorico() {
-    const contenedor = document.getElementById('lista-historico');
-    
-    try {
-        const response = await fetch('/api/resultado', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token de sesión 
-                'Accept': 'application/json'
-            }
-        });
-
-        if (!response.ok) throw new Error('Error al obtener datos');
-
-        const resultados = await response.json();
-        renderizarTabla(resultados);
-
-    } catch (error) {
-        console.error('Error:', error);
-        contenedor.innerHTML = '<p class="error">No se pudo cargar el histórico.</p>';
-    }
-}
-
-function renderizarTabla(datos) {
-    const tablaBody = document.querySelector('#tabla-resultados tbody');
-    tablaBody.innerHTML = ''; 
-
-    datos.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.fecha}</td>
-            <td>${item.kilometros} km</td>
-            <td>${item.duracion}</td>
-            <td>${item.velocidad_media} km/h</td>
-            <td><button onclick="verDetalle(${item.id})">Detalles</button></td>
-        `;
-        tablaBody.appendChild(row);
+function cargarHistorico() {
+    fetch('/api/historico-ciclista', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        mostrarTablaHistorico(data);
+    })
+    .catch(() => {
+        alert('Error al cargar histórico');
     });
 }
 
+function mostrarTablaHistorico(data) {
+    let contenedor = document.getElementById('contenido');
+    contenedor.innerHTML = '';
+
+    let tabla = document.createElement('table');
+
+    let columnas = [
+        'Fecha',
+        'Peso',
+        'FTP',
+        'Pulso Max',
+        'Pulso Reposo',
+        'Potencia Max',
+        'Grasa Corporal',
+        'VO2max',
+        'Comentario'
+    ];
+
+    let thead = document.createElement('thead');
+    let trHead = document.createElement('tr');
+
+    columnas.forEach(col => {
+        let th = document.createElement('th');
+        th.textContent = col;
+        trHead.appendChild(th);
+    });
+
+    thead.appendChild(trHead);
+    tabla.appendChild(thead);
+
+    let tbody = document.createElement('tbody');
+
+    data.forEach(item => {
+        let tr = document.createElement('tr');
+
+        let valores = [
+            item.fecha,
+            item.peso ?? '-',
+            item.ftp ?? '-',
+            item.pulso_max ?? '-',
+            item.pulso_reposo ?? '-',
+            item.potencia_max ?? '-',
+            item.grasa_corporal ?? '-',
+            item.vo2max ?? '-',
+            item.comentario ?? '-'
+        ];
+
+        valores.forEach(valor => {
+            let td = document.createElement('td');
+            td.textContent = valor;
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+    });
+
+    tabla.appendChild(tbody);
+    contenedor.appendChild(tabla);
+}
 
 async function verDetalle(id) {
     const res = await fetch(`/api/resultado/${id}`, {

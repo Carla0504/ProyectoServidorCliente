@@ -15,6 +15,7 @@ use App\Http\Controllers\SesionPlanEntrenamientoController;
 Route::post('/register', [CiclistaController::class, 'register']); 
 Route::post('/login', [CiclistaController::class, 'login']); 
 Route::post('/logout', [CiclistaController::class, 'logout']); 
+Route::get('/historico-ciclista', [CiclistaController::class, 'mostrarHistoricoCiclista']);
 
 // bloques de entrenamiento (crear, borrar, ver, listar)
 Route::get('/bloque', [BloqueEntrenamientoController::class, 'listDetails']); 
@@ -35,9 +36,11 @@ Route::get('/sesion/{id}', [SesionEntrenamientoController::class, 'get']);
 Route::delete('/sesion/{id}', [SesionEntrenamientoController::class, 'destroy']);
 
 // resultado de entrenamiento (ver, crear)
-Route::get('/resultado/crear', [ResultadoEntrenamientoController::class, 'create']);
-Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'verDetalle']);
-Route::get('/resultado', [ResultadoEntrenamientoController::class, 'cargarHistorico']);
+Route::post('/resultado/crear', [ResultadoEntrenamientoController::class, 'create']);
+Route::get('/resultado/{id}', [ResultadoEntrenamientoController::class, 'getResultados']);
+Route::get('/resultado', [ResultadoEntrenamientoController::class, 'listDetails']);
+
+//Route::get('/resultado', [ResultadoEntrenamientoController::class, 'cargarHistorico']);
 
 //sesion-plan entrenamiento (listar, crear, borrar)
 Route::get('/sesionbloque', [SesionPlanEntrenamientoController::class, 'listDetails']);
