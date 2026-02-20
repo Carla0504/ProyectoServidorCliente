@@ -38,6 +38,6 @@ class ResultadoEntrenamiento extends Model
     }
 
     public function bicicleta() {
-        return $this->belongsTo(Bicicleta::class, 'id_ciclista');
+        return $this->belongsTo(Bicicleta::class, 'id_bicicleta');
     }
 }
