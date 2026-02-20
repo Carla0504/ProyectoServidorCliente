@@ -11,6 +11,8 @@ class SesionEntrenamiento extends Model
 {
     protected $table = 'sesion_entrenamiento';
 
+    public $timestamps = false; // quita los campos updated_at y created_at del update.
+
     protected $fillable = [
         'id_plan',
         'fecha',
