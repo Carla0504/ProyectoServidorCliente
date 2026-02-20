@@ -45,5 +45,5 @@ Route::get('/resultado', [ResultadoEntrenamientoController::class, 'listDetails'
 //sesion-plan entrenamiento (listar, crear, borrar)
 Route::get('/sesionbloque', [SesionBloqueController::class, 'listDetails']);
 Route::post('/sesionbloque/crear', [SesionBloqueController::class, 'create']); 
-Route::put('/sesionbloque/{id}', [SesionPlanEntrenamientoController::class, 'update']);
+Route::put('/sesionbloque/{id}', [SesionBloqueController::class, 'update']);
 Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'destroy']);

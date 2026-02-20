@@ -31,7 +31,8 @@ class SesionBloqueController extends Controller
         ], 201);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id)
+    {
         $data = $request->validate([
             'id_sesion_entrenamiento' => 'required|numeric',
             'id_bloque_entrenamiento' => 'required|numeric',
@@ -39,12 +40,13 @@ class SesionBloqueController extends Controller
             'repeticiones' => 'required|numeric',
         ]);
 
-        $sesionbloque = SesionBloque::where('id', $request["id"])->update($data);
+        $sesionbloque = SesionBloque::findOrFail($id);
+        $sesionbloque->update($data);
 
         return response()->json([
             'message'=>'Sesion bloque modificado correctamente',
             'data' => $sesionbloque
-        ], 201);
+        ], 200);
     }
 
     public function get($id) {
@@ -58,8 +60,9 @@ class SesionBloqueController extends Controller
         return response()->json($data);
     }
 
-    public function destroy(SesionBloque $sesionbloque)
+    public function destroy($id)
     {
+        $sesionbloque = SesionBloque::findOrFail($id);
         $sesionbloque->delete();
 
         return response()->json([

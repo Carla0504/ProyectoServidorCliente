@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
             return response.json().then(data => {
                 if(response.ok) {
+                    console.log(response);
                     cargarSesiones(); // Recargar la tabla después de eliminar la sesión
                 } else {
                     alert(data.message || 'Error');

@@ -334,8 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let datos = Object.fromEntries(new FormData(formulario));
 
-            datos["activo"] = datos["activo"] == "on" ? 1 : 0;
-
             fetch(`/api/sesionbloque/${id}`, {
                 method:'PUT',
                 headers: {
