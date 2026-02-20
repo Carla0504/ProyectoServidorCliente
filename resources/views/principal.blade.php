@@ -11,6 +11,7 @@
     <script src="{{ asset('js/planes.js') }}"></script>
     <script src="{{ asset('js/resultados.js') }}"></script>
     <script src="{{ asset('js/sesiones.js') }}"></script>
+    <script src="{{ asset('js/sesionbloque.js') }}"></script>
     <script src="{{ asset('js/historico.js') }}"></script>
 </head>
 <body>

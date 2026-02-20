@@ -9,7 +9,7 @@ use App\Http\Controllers\BloqueEntrenamientoController;
 use App\Http\Controllers\PlanEntrenamientoController;
 use App\Http\Controllers\SesionEntrenamientoController;
 use App\Http\Controllers\ResultadoEntrenamientoController;
-use App\Http\Controllers\SesionPlanEntrenamientoController;
+use App\Http\Controllers\SesionBloqueController;
 
 // rutas de autenticacion
 Route::post('/registro', [CiclistaController::class, 'registro']); 
@@ -43,6 +43,6 @@ Route::get('/resultado', [ResultadoEntrenamientoController::class, 'listDetails'
 //Route::get('/resultado', [ResultadoEntrenamientoController::class, 'cargarHistorico']);
 
 //sesion-plan entrenamiento (listar, crear, borrar)
-Route::get('/sesionbloque', [SesionPlanEntrenamientoController::class, 'listDetails']);
-Route::post('/sesionbloque/crear', [SesionPlanEntrenamientoController::class, 'create']); 
-Route::delete('/sesionbloque/{id}', [SesionPlanEntrenamientoController::class, 'destroy']);
+Route::get('/sesionbloque', [SesionBloqueController::class, 'listDetails']);
+Route::post('/sesionbloque/crear', [SesionBloqueController::class, 'create']); 
+Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'destroy']);
