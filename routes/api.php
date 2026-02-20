@@ -12,7 +12,7 @@ use App\Http\Controllers\ResultadoEntrenamientoController;
 use App\Http\Controllers\SesionPlanEntrenamientoController;
 
 // rutas de autenticacion
-Route::post('/register', [CiclistaController::class, 'register']); 
+Route::post('/registro', [CiclistaController::class, 'registro']); 
 Route::post('/login', [CiclistaController::class, 'login']); 
 Route::post('/logout', [CiclistaController::class, 'logout']); 
 Route::get('/historico-ciclista', [CiclistaController::class, 'mostrarHistoricoCiclista']);
