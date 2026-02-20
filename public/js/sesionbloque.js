@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function crearSesionBloque() {
         let contenedor = document.getElementById('contenido');
-        contenedor.innerHTML = ''; // Limpiar contenido previo
+        contenedor.innerHTML = '';
 
         let formulario = document.createElement('form');
         
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function editarSesionBloque(id) {
         let contenedor = document.getElementById('contenido');
-        contenedor.innerHTML = ''; // Limpiar contenido previo
+        contenedor.innerHTML = '';
 
         let formulario = document.createElement('form');
 
@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let sesionInput = document.createElement('input');
         sesionInput.type = 'number';
         sesionInput.name = 'id_sesion_entrenamiento';
+        sesionInput.value = sesionBloque.id_sesion_entrenamiento;
         formulario.appendChild(sesionInput);
 
         formulario.appendChild(document.createElement('br'));
@@ -281,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let bloqueInput = document.createElement('input');
         bloqueInput.type = 'number';
         bloqueInput.name = 'id_bloque_entrenamiento';
+        bloqueInput.value = sesionBloque.id_bloque_entrenamiento;
         formulario.appendChild(bloqueInput);
 
         formulario.appendChild(document.createElement('br'));
@@ -293,6 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let ordenInput = document.createElement('input');
         ordenInput.type = 'number';
         ordenInput.name = 'orden';
+        ordenInput.value = sesionBloque.orden;
         formulario.appendChild(ordenInput);
 
         formulario.appendChild(document.createElement('br'));
@@ -305,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let repeticionesInput = document.createElement('input');
         repeticionesInput.type = 'number';
         repeticionesInput.name = 'repeticiones';
+        repeticionesInput.value = sesionBloque.repeticiones;
         formulario.appendChild(repeticionesInput);
 
         formulario.appendChild(document.createElement('br'));
