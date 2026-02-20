@@ -179,6 +179,12 @@ form select:focus {
     outline: none;
 }
 
+table .botones {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 form button {
     margin-top: 20px;
     margin-right: 10px;

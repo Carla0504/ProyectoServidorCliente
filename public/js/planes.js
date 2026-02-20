@@ -43,13 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let filaCabecera = document.createElement('tr');
 
         let columnas = [
-            'id_ciclista',
-            'nombre',
-            'descripcion',
-            'fecha_inicio',
-            'fecha_fin',
-            'objetivo',
-            'activo'
+            'ID Ciclista',
+            'Nombre',
+            'Descripcion',
+            'Fecha Inicio',
+            'Fecha Fin',
+            'Objetivo',
+            'Estado',
+            'Acciones'
         ];
 
         columnas.forEach(texto => {
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 plan.fecha_inicio,
                 plan.fecha_fin,
                 plan.objetivo,
-                plan.activo
+                plan.activo == 1 ? 'Activo' : 'Pendiente'
             ];
 
             valores.forEach(valor => {
@@ -83,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             let tdBotones = document.createElement('td');
+            tdBotones.classList.add('botones');
 
             let botonEditar = document.createElement('button');
             botonEditar.textContent = 'Editar';

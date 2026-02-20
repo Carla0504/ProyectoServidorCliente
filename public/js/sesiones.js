@@ -46,11 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let filaCabecera = document.createElement('tr');
 
         let columnas = [
-            'id_plan',
-            'fecha',
-            'nombre',
-            'descripcion',
-            'completada'
+            'ID Plan',
+            'Fecha',
+            'Nombre',
+            'Descripcion',
+            'Estado',
+            'Acciones'
         ];
 
         columnas.forEach(texto => {
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sesion.fecha,
                 sesion.nombre,
                 sesion.descripcion,
-                sesion.completada
+                sesion.completada == 1 ? 'Completada' : 'Pendiente'
             ];
 
             valores.forEach(valor => {
