@@ -49,15 +49,22 @@ function mostrarTabla(data) {
     let filaCabecera = document.createElement('tr');
 
     let columnas = [
-        'Fecha',
-        'Duración',
-        'Kilómetros',
-        'Vel. Media',
-        'Pulso Medio',
-        'Pulso Max',
-        'Potencia Media',
-        'TSS',
-        'Comentario',
+        'id_ciclista',
+        'id_bicicleta',
+        'id_sesion',
+        'fecha',
+        'duracion',
+        'kilometros',
+        'recorrido',
+        'pulso_medio',
+        'pulso_max',
+        'potencia_media',
+        'potencia_normalizada',
+        'velocidad_media',
+        'puntos_estres_tss',
+        'factor_intensidad_if',
+        'ascenso_metros',
+        'comentario',
         'Acciones'
     ];
 
@@ -76,15 +83,22 @@ function mostrarTabla(data) {
         let fila = document.createElement('tr');
 
         let valores = [
+            resultado.id_ciclista,
+            resultado.id_bicicleta,
+            resultado.id_sesion,
             resultado.fecha,
             resultado.duracion,
             resultado.kilometros + ' km',
-            resultado.velocidad_media ? resultado.velocidad_media + ' km/h' : '-',
-            resultado.pulso_medio ? resultado.pulso_medio + ' bpm' : '-',
-            resultado.pulso_max ? resultado.pulso_max + ' bpm' : '-',
-            resultado.potencia_media ? resultado.potencia_media + ' W' : '-',
-            resultado.puntos_estres_tss ? resultado.puntos_estres_tss : '-',
-            resultado.comentario || '-'
+            resultado.recorrido,
+            resultado.pulso_medio + ' bpm',
+            resultado.pulso_max + ' bpm',
+            resultado.potencia_media + ' W',
+            resultado.potencia_normalizada + ' W',
+            resultado.velocidad_media + ' km/h',
+            resultado.puntos_estres_tss,
+            resultado.factor_intensidad_if,
+            resultado.ascenso_metros + ' m',
+            resultado.comentario
         ];
 
         valores.forEach(valor => {
