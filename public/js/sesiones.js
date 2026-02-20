@@ -147,15 +147,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         formulario.appendChild(document.createElement('br'));
 
-        // COMPLETADA
-        let completadaLabel = document.createElement('label');
-        completadaLabel.textContent = 'Completada: ';
-        formulario.appendChild(completadaLabel);
+        // ACTIVO
+        let activoLabel = document.createElement('label');
+        activoLabel.textContent = 'Activo';
+        formulario.appendChild(activoLabel);
 
-        let completadaInput = document.createElement('input');
-        completadaInput.type = 'checkbox';
-        completadaInput.name = 'completada';
-        formulario.appendChild(completadaInput);
+        let activoInput = document.createElement('input');
+        activoInput.type = 'checkbox';
+        activoInput.name = 'activo';
+        formulario.appendChild(activoInput);
 
         formulario.appendChild(document.createElement('br'));
 

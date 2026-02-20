@@ -18,14 +18,14 @@ class SesionEntrenamientoController extends Controller
             'fecha' => 'required|date',
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
-            'completa' => 'required|boolean'
+            'completa' => 'required|numeric'
         ]);
 
-        $plan = SesionEntrenamiento::create($data);
+        $sesion = SesionEntrenamiento::create($data);
 
         return response()->json([
-            'message'=>'Plan creado correctamente',
-            'data' => $plan 
+            'message'=>'Sesión creada correctamente',
+            'data' => $sesion 
         ], 201);
     }
 
