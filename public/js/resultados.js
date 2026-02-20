@@ -35,7 +35,7 @@ function cargarResultados() {
         })
     }
 
-function mostrarTablaResultados(data) {
+function mostrarTabla(data) {
     let contenedor = document.getElementById('contenido');
     contenedor.innerHTML = ''; // Limpiar contenido previo
 
@@ -334,7 +334,7 @@ function crearResultado() {
         if (datos.factor_intensidad_if) datos.factor_intensidad_if = parseFloat(datos.factor_intensidad_if);
         if (datos.ascenso_metros) datos.ascenso_metros = parseInt(datos.ascenso_metros);
 
-        fetch('/api/resultado', {
+        fetch('/api/resultado/crear', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -418,21 +418,5 @@ function eliminarResultado(id) {
     })
     .catch(() => {
         alert('Error al conectar con el servidor');
-    });
-}
-
-function cargarResultados() {
-    fetch('/api/resultado', {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        mostrarTablaResultados(data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('contenido').innerHTML = '<p class="error">No se pudieron cargar los resultados.</p>';
     });
 }
