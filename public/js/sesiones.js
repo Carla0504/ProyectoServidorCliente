@@ -108,6 +108,19 @@ document.addEventListener('DOMContentLoaded', function() {
         titulo.textContent = 'Crear nueva sesión';
         formulario.appendChild(titulo);
 
+        // ID PLAN
+        let idPlanLabel = document.createElement('label');
+        idPlanLabel.textContent = 'ID Plan: ';
+        formulario.appendChild(idPlanLabel);
+
+        let idPlanInput = document.createElement('input');
+        idPlanInput.type = 'number';
+        idPlanInput.name = 'id_plan';
+        idPlanInput.required = true;
+        formulario.appendChild(idPlanInput);
+
+        formulario.appendChild(document.createElement('br'));
+
         // FECHA
         let fechaLabel = document.createElement('label');
         fechaLabel.textContent = 'Fecha: ';
@@ -147,15 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         formulario.appendChild(document.createElement('br'));
 
-        // ACTIVO
-        let activoLabel = document.createElement('label');
-        activoLabel.textContent = 'Activo';
-        formulario.appendChild(activoLabel);
+        // COMPLETADA
+        let completadaLabel = document.createElement('label');
+        completadaLabel.textContent = 'Completada: ';
+        formulario.appendChild(completadaLabel);
 
-        let activoInput = document.createElement('input');
-        activoInput.type = 'checkbox';
-        activoInput.name = 'activo';
-        formulario.appendChild(activoInput);
+        let completadaInput = document.createElement('input');
+        completadaInput.type = 'checkbox';
+        completadaInput.name = 'completada';
+        formulario.appendChild(completadaInput);
 
         formulario.appendChild(document.createElement('br'));
 
@@ -169,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let botonCancelar = document.createElement('button');
         botonCancelar.type = 'button';
         botonCancelar.textContent = 'Cancelar';
-        botonCancelar.addEventListener('click', () => cargarBloques());
+        botonCancelar.addEventListener('click', () => cargarSesiones());
         formulario.appendChild(botonCancelar);
 
         // Agregar el formulario al contenedor
@@ -179,6 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
 
             let datos = Object.fromEntries(new FormData(formulario));
+
+            datos["completada"] = datos["completada"] == "on" ? 1 : 0;
 
             fetch('/api/sesion/crear', {
                 method:'POST',

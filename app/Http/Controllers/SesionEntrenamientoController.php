@@ -15,10 +15,11 @@ class SesionEntrenamientoController extends Controller
     
     public function create(Request $request){
         $data = $request->validate([
+            'id_plan' => 'required|numeric',
             'fecha' => 'required|date',
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
-            'completa' => 'required|numeric'
+            'completada' => 'required|numeric'
         ]);
 
         $sesion = SesionEntrenamiento::create($data);
