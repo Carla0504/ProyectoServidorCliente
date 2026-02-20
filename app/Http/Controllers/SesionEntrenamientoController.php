@@ -41,12 +41,17 @@ class SesionEntrenamientoController extends Controller
         return response()->json($data);
     }
 
-    public function destroy(SesionEntrenamiento $sesion_entrenamiento)
+    public function destroy($id)
     {
-        $sesion_entrenamiento->delete();
+        $sesion_entrenamiento = SesionEntrenamiento::findOrFail($id);
+        $sesion_entrenamiento->foreign('sesion_entrenamiento_id')
+        ->references('id')
+        ->on('sesion_entrenamientos')
+        ->onDelete('cascade');
+
 
         return response()->json([
-            "message" => "Sesión eliminada correctamente"
+            "message" => "Sesion entrenamiento eliminado correctamente"
         ]);
     }
 }
