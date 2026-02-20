@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
 use App\Models\Ciclista;
+use App\Models\Bicicleta;
 
 class ResultadoEntrenamiento extends Model
 {
@@ -34,5 +35,9 @@ class ResultadoEntrenamiento extends Model
     //la relacion para el id
     public function ciclista() {
         return $this->belongsTo(Cliclista::class, 'id_ciclista');
+    }
+
+    public function bicicleta() {
+        return $this->belongsTo(Bicicleta::class, 'id_ciclista');
     }
 }

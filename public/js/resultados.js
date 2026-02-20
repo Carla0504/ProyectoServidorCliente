@@ -306,7 +306,7 @@ function crearResultado() {
     // BOTON CREAR
     let botonCrear = document.createElement('button');
     botonCrear.type = 'submit';
-    botonCrear.textContent = 'Guardar entrenamiento';
+    botonCrear.textContent = 'Guardar resultado';
     formulario.appendChild(botonCrear);
 
     // BOTON CANCELAR
@@ -336,7 +336,6 @@ function crearResultado() {
 
         fetch('/api/resultado/crear', {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

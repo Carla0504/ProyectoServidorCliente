@@ -34,6 +34,12 @@ class ResultadoEntrenamientoController extends Controller
             'recorrido' => $request->recorrido,
             'pulso_medio' => $request->pulso_medio,
             'pulso_max' => $request->pulso_max,
+            'potencia_media' => $request->potencia_media,
+            'potencia_normalizada' => $request->potencia_normalizada,
+            'velocidad_media' => $request->velocidad_media,
+            'puntos_estres_tss' => $request->puntos_estres_tss,
+            'factor_intensidad_if' => $request->factor_intensidad_if,
+            'ascenso_metros' => $request->ascenso_metros,
             'comentario' => $request->comentario
         ]);
 
@@ -43,10 +49,10 @@ class ResultadoEntrenamientoController extends Controller
     public function getResultados($id) {
         $ciclistaId = session()->get('ciclista_id');
 
-        if(!$ciclistaId){
+        if (!$ciclistaId) {
             return response()->json(['message' => 'No autorizafo'], 401);
         }
-        if($id){
+        if ($id) {
             $resultado = ResultadoEntrenamiento::where('id_ciclista', $ciclistaId)->find($id);
             return $resultado ? response()->json($resultado) : response()->json(['message' => 'No encontrado'], 404);
         }
