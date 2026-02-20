@@ -23,8 +23,7 @@
                     <div class="submenu">
                         <p id="sesiones">Sesiones</p>
                         <p id="planes">Planes</p>
-                        <p id="registrar_resultado">Registrar resultado</p>
-                        <p id="consultar_resultado">Consultar resultado</p>
+                        <p id="resultados">Resultado</p>
                     </div>
                 </li>
                 <li>Bloques
