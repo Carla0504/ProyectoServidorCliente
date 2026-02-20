@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
 use App\Models\Ciclista;
 use App\Models\Bicicleta;
+use App\Models\SesionEntrenamiento;
 
 class ResultadoEntrenamiento extends Model
 {
@@ -39,5 +40,9 @@ class ResultadoEntrenamiento extends Model
 
     public function bicicleta() {
         return $this->belongsTo(Bicicleta::class, 'id_bicicleta');
+    }
+
+    public function sesion() {
+        return $this->belongsTo(SesionEntrenamiento::class, 'id_sesion');
     }
 }
