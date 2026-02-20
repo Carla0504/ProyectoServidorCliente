@@ -20,7 +20,7 @@ class PlanEntrenamientoController extends Controller
             'descripcion' => 'required|string|max:255',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
-            'descripcion' => 'required|string|max:255',
+            'objetivo' => 'required|string|max:255',
             'activo' => 'required|numeric',
         ]);
 
@@ -29,6 +29,24 @@ class PlanEntrenamientoController extends Controller
         return response()->json([
             'message'=>'Plan creado correctamente',
             'data' => $plan 
+        ], 201);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:255',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date',
+            'objetivo' => 'required|string|max:255',
+            'activo' => 'required|numeric',
+        ]);
+
+        $plan = PlanEntrenamiento::where('id', $request["id"])->update($data);
+
+        return response()->json([
+            'message'=>'Plan modificado correctamente',
+            'data' => $plan
         ], 201);
     }
 

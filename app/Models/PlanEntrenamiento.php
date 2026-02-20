@@ -9,6 +9,8 @@ class PlanEntrenamiento extends Model
 {
     protected $table = 'plan_entrenamiento';
 
+    public $timestamps = false; // quita los campos updated_at y created_at del update.
+
     protected $fillable = [
         'id_ciclista',
         'nombre',

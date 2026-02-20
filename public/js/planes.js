@@ -263,15 +263,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function editarPlan(id) {
+    async function editarPlan(id) {
         let contenedor = document.getElementById('contenido');
         contenedor.innerHTML = ''; // Limpiar contenido previo
 
         let formulario = document.createElement('form');
+
+        let plan = await fetch('/api/plan', {
+                method:'GET',
+                headers: {
+                    'Accept':'application/json',
+                },
+            })
+            .then(response => {
+                return response.json().then(function(data) {
+                    if(response.ok) {
+                        for (let planData of data) {
+                            if (planData['id'] == id) return planData;
+                        }
+                    } else {
+                        alert(data.message || 'Error');
+                    }
+                })
+            })
+            .catch(function(error) {
+                alert('No se ha podido conectar');
+            });
+
         
         // TITULO
         let titulo = document.createElement('h2');
-        titulo.textContent = 'Crear nuevo plan';
+        titulo.textContent = 'Editar un Plan';
         formulario.appendChild(titulo);
 
         // NOMBRE
@@ -378,6 +400,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let datos = Object.fromEntries(new FormData(formulario));
 
+            datos["activo"] = datos["activo"] == "on" ? 1 : 0;
+
             fetch(`/api/plan/${id}`, {
                 method:'PUT',
                 headers: {
@@ -392,6 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         alert('Plan editado correctamente');
                         cargarPlanes();
                     } else {
+                        console.log(data.data)
                         alert(data.message || 'Error');
                     }
                 })
