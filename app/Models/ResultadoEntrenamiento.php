@@ -13,6 +13,8 @@ class ResultadoEntrenamiento extends Model
     // el entrenamiento es el propio resultado
     protected $table = 'entrenamiento';
 
+    public $timestamps = false; // quita los campos updated_at y created_at del update.
+
     protected $fillable = [
         // faltan campos
         'id_ciclista',

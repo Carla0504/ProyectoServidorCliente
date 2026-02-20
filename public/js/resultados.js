@@ -134,6 +134,18 @@ function crearResultado() {
     formulario.appendChild(titulo);
 
     // SESION
+    let ciclistaLabel = document.createElement('label');
+    ciclistaLabel.textContent = 'ID Ciclista';
+    formulario.appendChild(ciclistaLabel);
+
+    let ciclistaInput = document.createElement('input');
+    ciclistaInput.type = 'number';
+    ciclistaInput.name = 'id_ciclista';
+    ciclistaInput.required = true;
+    formulario.appendChild(ciclistaInput);
+    formulario.appendChild(document.createElement('br'));
+
+    // SESION
     let sesionLabel = document.createElement('label');
     sesionLabel.textContent = 'ID Sesión';
     formulario.appendChild(sesionLabel);
@@ -328,6 +340,9 @@ function crearResultado() {
         let datos = Object.fromEntries(new FormData(formulario));
         
         //convertir campos numericos para que lo pille como es
+        if (datos.id_ciclista) datos.id_ciclista = parseInt(datos.id_ciclista);
+        if (datos.id_sesion) datos.id_sesion = parseInt(datos.id_sesion);
+        if (datos.id_bicicleta) datos.id_bicicleta = parseInt(datos.id_bicicleta);
         if (datos.kilometros) datos.kilometros = parseFloat(datos.kilometros);
         if (datos.pulso_medio) datos.pulso_medio = parseInt(datos.pulso_medio);
         if (datos.pulso_max) datos.pulso_max = parseInt(datos.pulso_max);
@@ -337,6 +352,8 @@ function crearResultado() {
         if (datos.puntos_estres_tss) datos.puntos_estres_tss = parseInt(datos.puntos_estres_tss);
         if (datos.factor_intensidad_if) datos.factor_intensidad_if = parseFloat(datos.factor_intensidad_if);
         if (datos.ascenso_metros) datos.ascenso_metros = parseInt(datos.ascenso_metros);
+
+        console.log(datos);
 
         fetch('/api/resultado/crear', {
             method: 'POST',
@@ -363,6 +380,7 @@ function crearResultado() {
 }
 
 function verDetalleResultado(id) {
+    
     fetch(`/api/resultado/${id}`, {
         method: 'GET',
         credentials: 'include',
@@ -372,6 +390,8 @@ function verDetalleResultado(id) {
     })
     .then(response => response.json())
     .then(data => {
+        data = data[0];
+
         let detalles = `
             Fecha: ${data.fecha}
             Duración: ${data.duracion}

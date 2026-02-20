@@ -14,18 +14,29 @@ class ResultadoEntrenamientoController extends Controller
 
     //validacion (hayq ue hacerla no la quites)
     public function create(Request $request){
-        $ciclistaId = $request->session()->get('ciclista_id');
+        // $ciclistaId = $request->session()->get('ciclista_id');
         
         $request->validate([
-            'id_sesion' => 'required',
-            'id_bicicleta' => 'required',
+            'id_ciclista' => 'required|numeric|exists:ciclista,id',
+            'id_sesion' => 'required|numeric|exists:sesion_entrenamiento,id',
+            'id_bicicleta' => 'required|numeric|exists:bicicleta,id',
             'fecha' => 'required|date',
-            'duracion' => 'required',
-            'kilometros' => 'required|numeric'
+            'duracion' => 'required|string|max:255',
+            'kilometros' => 'required|numeric',
+            'recorrido' => 'required|string|max:255',
+            'pulso_medio' => 'required|numeric',
+            'pulso_max' => 'required|numeric',
+            'potencia_media' => 'required|numeric',
+            'potencia_normalizada' => 'required|numeric',
+            'velocidad_media' => 'required|numeric',
+            'puntos_estres_tss' => 'required|numeric',
+            'factor_intensidad_if' => 'required|numeric',
+            'ascenso_metros' => 'required|numeric',
+            'comentario' => 'required|string|max:255',
         ]);
 
         $resultado = ResultadoEntrenamiento::create([
-            'id_ciclista' => $ciclistaId,
+            'id_ciclista' => $request->id_ciclista,
             'id_bicicleta' => $request->id_bicicleta,
             'id_sesion' => $request->id_sesion,
             'fecha' => $request->fecha,
@@ -47,19 +58,19 @@ class ResultadoEntrenamientoController extends Controller
     }
 
     public function getResultados($id) {
-        $ciclistaId = session()->get('ciclista_id');
+        /*$ciclistaId = session()->get('ciclista_id');
 
         if (!$ciclistaId) {
-            return response()->json(['message' => 'No autorizafo'], 401);
-        }
+            return response()->json(['message' => 'No autorizado'], 401);
+        }*/
         if ($id) {
-            $resultado = ResultadoEntrenamiento::where('id_ciclista', $ciclistaId)->find($id);
+            $resultado = ResultadoEntrenamiento::where('id', $id)->get();
             return $resultado ? response()->json($resultado) : response()->json(['message' => 'No encontrado'], 404);
         }
         
-        $historico = ResultadoEntrenamiento::where('id_ciclista',$ciclistaId)->orderBy('fecha','desc')->get();
+        //$historico = ResultadoEntrenamiento::where('id_ciclista',$ciclistaId)->orderBy('fecha','desc')->get();
 
-        return response()->json($historico);
+        return response()->json($resultado);
         
     }
 }
