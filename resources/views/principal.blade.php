@@ -21,15 +21,16 @@
                 <li>Inicio</li>
                 <li>Entrenamientos
                     <div class="submenu">
-                        <p id="bloques">Bloques</p>
                         <p id="sesiones">Sesiones</p>
                         <p id="planes">Planes</p>
-                    </div>
-                </li>
-                <li>Resultados
-                    <div class="submenu">
                         <p id="registrar_resultado">Registrar resultado</p>
                         <p id="consultar_resultado">Consultar resultado</p>
+                    </div>
+                </li>
+                <li>Bloques
+                    <div class="submenu">
+                        <p id="bloques">Bloques</p>
+                        <p id="sesion_bloque">Sesiones</p>
                     </div>
                 </li>
                 <li>Usuario
