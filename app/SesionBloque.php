@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
+use App\Models\SesionEntrenamiento;
+use App\Models\BloqueEntrenamiento;
 
 class SesionBloque extends Model
 {
