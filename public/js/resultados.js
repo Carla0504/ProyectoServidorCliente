@@ -114,16 +114,6 @@ function mostrarTabla(data) {
         botonVer.addEventListener('click', () => verDetalleResultado(resultado.id));
         tdBotones.appendChild(botonVer);
 
-        let botonEditar = document.createElement('button');
-        botonEditar.textContent = 'Editar';
-        botonEditar.addEventListener('click', () => editarResultado(resultado.id));
-        tdBotones.appendChild(botonEditar);
-
-        let botonEliminar = document.createElement('button');
-        botonEliminar.textContent = 'Eliminar';
-        botonEliminar.addEventListener('click', () => eliminarResultado(resultado.id));
-        tdBotones.appendChild(botonEliminar);
-
         fila.appendChild(tdBotones);
         cuerpo.appendChild(fila);
     });
@@ -401,33 +391,5 @@ function verDetalleResultado(id) {
     })
     .catch(() => {
         alert('Error al cargar los detalles');
-    });
-}
-
-function eliminarResultado(id) {
-    if (!confirm('¿Estás seguro de que quieres eliminar este entrenamiento?')) {
-        return;
-    }
-    
-    fetch(`/api/resultado/${id}`, {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        }
-    })
-    .then(response => {
-        return response.json().then(data => {
-            if(response.ok) {
-                alert('Entrenamiento eliminado');
-                cargarResultados();
-            } else {
-                alert(data.message || 'Error al eliminar');
-            }
-        })
-    })
-    .catch(() => {
-        alert('Error al conectar con el servidor');
     });
 }
