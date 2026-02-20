@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;//tampoco se si esto se queda
+use App\Models\Ciclista;
 
 class ResultadoEntrenamiento extends Model
 {
