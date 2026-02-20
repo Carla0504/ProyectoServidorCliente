@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 use App\Models\ResultadoEntrenamiento;
 use Illuminate\Http\Request;
+use App\Models\Entrenamiento;
 
 class ResultadoEntrenamientoController extends Controller
 {
+    public function listDetails(){
+        $data = ResultadoEntrenamiento::all();
+
+        return response()->json($data);
+    }
+
     //validacion (hayq ue hacerla no la quites)
     public function create(Request $request){
         $ciclistaId = $request->session()->get('ciclista_id');

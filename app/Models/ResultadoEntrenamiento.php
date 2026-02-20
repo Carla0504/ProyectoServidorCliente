@@ -8,8 +8,8 @@ use App\Models\Ciclista;
 
 class ResultadoEntrenamiento extends Model
 {
-    // no tiene tabla
-    protected $table = 'historico_entrenamiento';
+    // el entrenamiento es el propio resultado
+    protected $table = 'entrenamiento';
 
     protected $fillable = [
         // faltan campos
@@ -32,7 +32,7 @@ class ResultadoEntrenamiento extends Model
     ];
 
     //la relacion para el id
-    public function ciclista(){
+    public function ciclista() {
         return $this->belongsTo(Cliclista::class, 'id_ciclista');
     }
 }

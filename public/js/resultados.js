@@ -336,10 +336,10 @@ function crearResultado() {
 
         fetch('/api/resultado/crear', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(datos)
         })
@@ -361,8 +361,10 @@ function crearResultado() {
 
 function verDetalleResultado(id) {
     fetch(`/api/resultado/${id}`, {
+        method: 'GET',
+        credentials: 'include',
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Accept': 'application/json',
         }
     })
     .then(response => response.json())
@@ -400,10 +402,10 @@ function eliminarResultado(id) {
     
     fetch(`/api/resultado/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     })
     .then(response => {
