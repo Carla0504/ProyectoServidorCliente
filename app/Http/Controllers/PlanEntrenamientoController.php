@@ -16,6 +16,7 @@ class PlanEntrenamientoController extends Controller
     //validacion (hayq ue hacerla no la quites)
     public function create(Request $request){
         $data = $request->validate([
+            'id_ciclista' => 'required|numeric|exists:ciclista,id',
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'fecha_inicio' => 'required|date',
@@ -32,8 +33,10 @@ class PlanEntrenamientoController extends Controller
         ], 201);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id)
+    {
         $data = $request->validate([
+            'id_ciclista' => 'required|numeric|exists:ciclista,id',
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'fecha_inicio' => 'required|date',
@@ -42,12 +45,13 @@ class PlanEntrenamientoController extends Controller
             'activo' => 'required|numeric',
         ]);
 
-        $plan = PlanEntrenamiento::where('id', $request["id"])->update($data);
+        $plan = PlanEntrenamiento::findOrFail($id);
+        $plan->update($data);
 
         return response()->json([
             'message'=>'Plan modificado correctamente',
             'data' => $plan
-        ], 201);
+        ], 200);
     }
 
     public function get($id) {
@@ -61,9 +65,16 @@ class PlanEntrenamientoController extends Controller
         return response()->json($data);
     }
 
-    public function destroy(PlanEntrenamiento $plan_entrenamiento)
+    public function destroy($id)
     {
-        $plan_entrenamiento->delete();
+        $plan = PlanEntrenamiento::findOrFail($id);
+
+        foreach ($plan->sesiones as $sesion) {
+            $sesion->entrenamientos()->delete();
+            $sesion->delete();
+        }
+
+        $plan->delete();
 
         return response()->json([
             "message" => "Plan eliminado correctamente"

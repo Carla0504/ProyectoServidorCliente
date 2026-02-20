@@ -115,6 +115,19 @@ document.addEventListener('DOMContentLoaded', function() {
         titulo.textContent = 'Crear nuevo plan';
         formulario.appendChild(titulo);
 
+        // ID CICLISTA
+        let ciclistaLabel = document.createElement('label');
+        ciclistaLabel.textContent = 'ID Ciclista';
+        formulario.appendChild(ciclistaLabel);
+
+        let ciclistaInput = document.createElement('input');
+        ciclistaInput.type = 'number';
+        ciclistaInput.name = 'id_ciclista';
+        ciclistaInput.required = true;
+        formulario.appendChild(ciclistaInput);
+
+        formulario.appendChild(document.createElement('br'));
+
         // NOMBRE
         let nombreLabel = document.createElement('label');
         nombreLabel.textContent = 'Nombre';
@@ -295,6 +308,19 @@ document.addEventListener('DOMContentLoaded', function() {
         let titulo = document.createElement('h2');
         titulo.textContent = 'Editar un Plan';
         formulario.appendChild(titulo);
+
+        // ID CICLISTA
+        let ciclistaLabel = document.createElement('label');
+        ciclistaLabel.textContent = 'ID Ciclista';
+        formulario.appendChild(ciclistaLabel);
+
+        let ciclistaInput = document.createElement('input');
+        ciclistaInput.type = 'number';
+        ciclistaInput.name = 'id_ciclista';
+        ciclistaInput.required = true;
+        formulario.appendChild(ciclistaInput);
+
+        formulario.appendChild(document.createElement('br'));
 
         // NOMBRE
         let nombreLabel = document.createElement('label');
