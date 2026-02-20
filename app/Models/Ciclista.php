@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable; 
 use Illuminate\Notifications\Notifiable;
 use App\Models\PlanEntrenamiento;
+use App\Models\SesionEntrenamiento;
 //use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
 class Ciclista extends Authenticatable
