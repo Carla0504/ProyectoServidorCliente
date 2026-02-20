@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\ResultadoEntrenamiento;
 use Illuminate\Http\Request;
-use App\Models\Entrenamiento;
 
 class ResultadoEntrenamientoController extends Controller
 {
@@ -48,11 +47,11 @@ class ResultadoEntrenamientoController extends Controller
             return response()->json(['message' => 'No autorizafo'], 401);
         }
         if($id){
-            $resultado = Entrenamiento::where('id_ciclista', $ciclistaId)->find($id);
+            $resultado = ResultadoEntrenamiento::where('id_ciclista', $ciclistaId)->find($id);
             return $resultado ? response()->json($resultado) : response()->json(['message' => 'No encontrado'], 404);
         }
         
-        $historico = Entrenamiento::where('id_ciclista',$ciclistaId)->orderBy('fecha','desc')->get();
+        $historico = ResultadoEntrenamiento::where('id_ciclista',$ciclistaId)->orderBy('fecha','desc')->get();
 
         return response()->json($historico);
         

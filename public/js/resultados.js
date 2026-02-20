@@ -37,10 +37,10 @@ function cargarResultados() {
 
 function mostrarTabla(data) {
     let contenedor = document.getElementById('contenido');
-    contenedor.innerHTML = ''; // Limpiar contenido previo
+    contenedor.innerHTML = '';
 
     let botonCrear = document.createElement('button');
-    botonCrear.textContent = 'Registrar nuevo entrenamiento';
+    botonCrear.textContent = 'Registrar un nuevo resultado';
     botonCrear.addEventListener('click', () => crearResultado());
     contenedor.appendChild(botonCrear);
 
