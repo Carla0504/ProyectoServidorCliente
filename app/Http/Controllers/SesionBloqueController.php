@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\SesionBloque;
 use Illuminate\Http\Request;
+use App\Models\SesionBloque;
 
 class SesionBloqueController extends Controller
 {
