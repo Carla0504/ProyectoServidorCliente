@@ -404,10 +404,6 @@ function verDetalleResultado(id) {
     });
 }
 
-function editarResultado(id) {
-    alert('Funcionalidad de edición en desarrollo');
-}
-
 function eliminarResultado(id) {
     if (!confirm('¿Estás seguro de que quieres eliminar este entrenamiento?')) {
         return;
